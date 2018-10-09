@@ -1,9 +1,12 @@
-name: toyseed's blog
+title: toyseed's blog
 markdown: kramdown
 
 collections:
   authors:
     output: true
+
+plugins:
+  - jekyll-feed
 
 defaults:
   - scope:
