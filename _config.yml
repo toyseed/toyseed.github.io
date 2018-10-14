@@ -1,3 +1,6 @@
+source: _source
+timezone: Asia/Seoul
+
 title: toyseed's blog
 markdown: kramdown
 
