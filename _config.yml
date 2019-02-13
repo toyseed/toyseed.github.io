@@ -8,6 +8,8 @@ timezone: Asia/Seoul
 title: toyseed's blog
 markdown: kramdown
 
+#incremental: true
+
 #collections:
 #  authors:
 #    output: true

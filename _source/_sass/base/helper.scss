@@ -4,4 +4,5 @@
 
 .site-width {
   max-width: $site-width;
+  @include margin-auto;
 }
