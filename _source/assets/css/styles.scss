@@ -5,4 +5,10 @@
 @import "mixin/helper";
 @import "base/helper";
 @import "base/reset";
+@import "base/typography";
+@import "structure/body";
 @import "structure/header";
+@import "structure/content";
+@import "pages/blog";
+@import "pages/about";
+@import "pages/tags";
