@@ -3,12 +3,20 @@
     <head>
         <meta charset="utf-8">
         <title>{{ page.title }}</title>
+        <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
         <link rel="stylesheet" href="/assets/css/styles.css">
         {% feed_meta %}
         {% seo %}
     </head>
     <body>
-        {% include navigation.html %}
-        {{ content }}
+        <div class="body">
+            {% include header.html %}
+            <div class="content_wrap">
+                <div class="content">
+                   {{ content }}
+                </div>
+            </div>
+        </div>
     </body>
 </html>

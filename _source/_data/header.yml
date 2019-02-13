@@ -1,0 +1,4 @@
+- name: 글
+  link: /
+- name: 태그
+  link: /tags

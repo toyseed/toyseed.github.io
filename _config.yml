@@ -1,24 +1,27 @@
+###################################################
+# default settings
+# https://jekyllrb.com/docs/configuration/default/
+###################################################
 source: _source
 timezone: Asia/Seoul
 
 title: toyseed's blog
 markdown: kramdown
 
-collections:
-  authors:
-    output: true
+#collections:
+#  authors:
+#    output: true
 
 plugins:
   - jekyll-feed
 
+# https://jekyllrb.com/docs/configuration/front-matter-defaults/
+# The defaults key holds an array of scope/values pairs that define what defaults should be set for a particular file path, and optionally, a file type in that path.
 defaults:
   - scope:
+      # an empty string here means all files in the project
       path: ""
-      type: "authors"
-    values:
-      layout: "author"
-  - scope:
-      path: ""
+      # The different types that are available to you are pages, posts, drafts or any collection in your site
       type: "posts"
     values:
       layout: "post"

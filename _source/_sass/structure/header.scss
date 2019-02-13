@@ -1,0 +1,20 @@
+// header style
+.header__wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 1.5em 1.5em 1em;
+  box-shadow: 0px 0px 8px 1px gray;
+}
+
+.header__logo {
+  font-family: 'Nanum Myeongjo', serif;
+  font-size: 1.8em;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+.header__menu__item {
+  display: inline;
+  margin-left: 1em;
+}
