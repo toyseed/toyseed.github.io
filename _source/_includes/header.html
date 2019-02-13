@@ -1,11 +1,11 @@
 <nav class="header">
     <div class="header__wrap site-width">
-        <div class="header__logo"><a href="/about">장난감씨앗</a></div>
+        <div class="header__logo"><a href="/about/">장난감씨앗</a></div>
         <div class="header__menu">
             <ul>
                 {% for item in site.data.header %}
                 <li class="header__menu__item">
-                    <a href="{{ item.link }}" {% if page.url == item.link %}class="header__menu__item--current"{% endif %}>
+                    <a href="{{ item.link }}" class="header__menu__link{% if page.url == item.link %} header__menu__link--current{% endif %}">
                         {{item.name}}
                     </a>
                 </li>
