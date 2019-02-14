@@ -1,0 +1,24 @@
+{
+  "name": "toyseed.github.io",
+  "version": "1.0.0",
+  "description": "toyseed's blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toyseed/toyseed.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/toyseed/toyseed.github.io/issues"
+  },
+  "homepage": "https://github.com/toyseed/toyseed.github.io#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "gulp": "^4.0.0"
+  }
+}
