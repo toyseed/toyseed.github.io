@@ -1,0 +1,32 @@
+// style for post
+
+.post__top__content {
+  margin-top: $content-margin-top;
+}
+
+.post__title {
+  h1 {
+    font-size: 3em;
+  }
+}
+.post__content {
+  margin-top: 2em;
+  padding: 0 1em;
+}
+
+.post__tags {
+  margin-top: 2em;
+}
+
+.post__tag {
+  display: inline-block;
+  height: 1.5em;
+  border-radius: 0.2em;
+  padding: 0 10px;
+  background-color: #8f969b;
+  color: #FFFFFF;
+}
+
+.post__tag__link {
+  text-decoration: none;
+}

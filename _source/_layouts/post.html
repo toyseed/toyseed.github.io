@@ -1,23 +1,28 @@
 ---
 layout: default
 ---
-<div class="content_title">
-    <h1>{{ page.title }}</h1>
-</div>
-<div class="content_date">
-    {{ page.date | date_to_string}}
-    {% assign author = site.authors | where: 'short_name', page.author | first %}
-    {% if author %}
-        - <a href="{{ author.url }}">{{ author.name }}</a>
-    {% endif %}
-</div>
+<section class="post">
+    <div class="post__top">
+        <div class="post__top__content site-width">
+            <div class="post__title">
+                <h1>{{ page.title }}</h1>
+            </div>
+            <div class="post-date">
+                {{ page.date | date_to_string}}
+                {% assign author = site.authors | where: 'short_name', page.author | first %}
+                {% if author %}
+                    - <a href="{{ author.url }}">{{ author.name }}</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="post__content site-width">
+        {{ content }}
+    </div>
 
-<div class="content_body">
-    {{ content }}
-</div>
-
-<div class="post_tags">
-    {% for tag in page.tags %}
-    <span class="post_tag">{{ tag }}</span>
-    {% endfor %}
-</div>
+    <div class="post__tags site-width">
+        {% for tag in page.tags %}
+        <span class="post__tag"><a href="/tags/" class="post__tag__link">{{ tag }}</a></span>
+        {% endfor %}
+    </div>
+</section>
