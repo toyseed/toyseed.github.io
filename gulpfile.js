@@ -27,8 +27,10 @@ gulp.task('browserSync', function(done) {
    done();
 });
 
+const watchTarget = ["**/*.+(html|scss)", "!_site/**/*", "!node_modules/**/*"];
+
 gulp.task('watch', function() {
-   gulp.watch(['_source/**/*.*'], gulp.series('jekyll-build', 'browserSync-reload'));
+   gulp.watch(watchTarget, gulp.series('jekyll-build', 'browserSync-reload'));
 });
 
 gulp.task('serve', gulp.series('jekyll-build', 'browserSync'));
