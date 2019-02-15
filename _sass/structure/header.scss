@@ -1,13 +1,12 @@
 // header style
 .header__wrap {
   box-shadow: 0px 0px 4px 1px $bottom-line-color;
-  transition: all 0.5s ease;
+  transition: box-shadow 0.5s ease;
 
   &:hover {
     box-shadow: 0px 0px 12px 1px $bottom-line-color;
   }
 }
-
 
 .header a {
   text-decoration: none;
