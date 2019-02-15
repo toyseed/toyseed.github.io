@@ -2,13 +2,12 @@
 # default settings
 # https://jekyllrb.com/docs/configuration/default/
 ###################################################
-source: _source
 timezone: Asia/Seoul
+
+exclude: ["gitignore", "CNAME", "Gemfile", "Gemfile.lock", "gulpfile.js", "package.json", "package-lock.json", "node_modules", ".idea", "toyseed.github.io.iml"]
 
 title: toyseed's blog
 markdown: kramdown
-
-#incremental: true
 
 #collections:
 #  authors:
