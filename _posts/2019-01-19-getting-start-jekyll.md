@@ -1,6 +1,6 @@
 ---
 title: Getting Start Jekyll
-tags: [jekyll]
+tags: [jekyll, blogging]
 ---
 # [Quickstart](https://jekyllrb.com/docs/)
 

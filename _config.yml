@@ -10,9 +10,10 @@ permalink: pretty
 
 title: toyseed's blog
 
-#collections:
-#  authors:
-#    output: true
+collections:
+  tag:
+    output: true
+    permalink: /tag/:name/
 
 plugins:
   - jekyll-feed
@@ -27,6 +28,11 @@ defaults:
       type: "posts"
     values:
       layout: "post"
+  - scope:
+      path: ""
+      type: "tag"
+    values:
+      layout: "tagpostlist"
   - scope:
       path: ""
     values:

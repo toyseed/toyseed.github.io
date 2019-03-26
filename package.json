@@ -19,6 +19,7 @@
   "homepage": "https://github.com/toyseed/toyseed.github.io#readme",
   "devDependencies": {
     "browser-sync": "^2.26.3",
-    "gulp": "^4.0.0"
+    "gulp": "^4.0.0",
+    "path": "^0.12.7"
   }
 }

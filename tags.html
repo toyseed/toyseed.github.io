@@ -3,4 +3,8 @@ title: Tags
 permalink: /tags/
 ---
 
-<div>in progress..</div>
+{% for tag in site.tags %}
+<div>
+    <div><a href="/tag/{{ tag[0] }}">{{ tag[0] }}</a><span>{{ tag[1].size }}</span></div>
+</div>
+{% endfor %}
