@@ -1,6 +1,9 @@
 // style for post
 
 @import "helper/github";
+.post__top {
+  margin-bottom: 1px;
+}
 
 .post__top__content {
   padding-top: $content-margin-top;
@@ -12,8 +15,7 @@
   }
 }
 .post__content {
-  margin-top: 2em;
-  padding: 0 1em;
+  padding: 0 1em 1em;
 }
 
 .post__tags {
@@ -25,10 +27,11 @@
   height: 1.5em;
   border-radius: 0.2em;
   padding: 0 10px;
-  background-color: #8f969b;
-  color: #FFFFFF;
+  background-color: #51a1a5;
+  color:#dee2e6;
 }
 
 .post__tag__link {
+  color:inherit;
   text-decoration: none;
 }

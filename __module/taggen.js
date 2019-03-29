@@ -6,6 +6,8 @@
     3. 추철한 태그가 collection path 에 파일로 있는지 확인
         3-1. 없으면 파일 생성
         3-2. 있으면 다음 단계로
+
+TODO : 없어진 태그 삭제
  */
 const fs = require('fs');
 const path = require('path');

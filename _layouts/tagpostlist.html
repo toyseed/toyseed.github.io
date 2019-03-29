@@ -1,18 +1,22 @@
 ---
 layout: default
 ---
-<div class="tag-posts">
+<div class="tag-posts site-width content-container">
+    <div class="content-item">
     {% include tags.html %}
-    <h2 class="tag-posts__title">{{ page.name }}</h2>
-    <div class="tag-posts__list">
-        <ul>
-        {% for tag in site.tags %}
-            {% if tag[0] == page.name %}
-                {% for post in tag[1] %}
-                    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-                {% endfor %}
-            {% endif %}
-        {% endfor %}
-        </ul>
+    </div>
+    <div class="content-container">
+        <h2 class="tag-posts__title content-item">#{{ page.name }}</h2>
+        <div class="tag-posts__list content-item">
+            <ul>
+            {% for tag in site.tags %}
+                {% if tag[0] == page.name %}
+                    {% for post in tag[1] %}
+                        <li class="tag-post__item"><a href="{{ post.url }}" class="tag-post__link">{{ post.title }}</a></li>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+            </ul>
+        </div>
     </div>
 </div>

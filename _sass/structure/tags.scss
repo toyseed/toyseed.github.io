@@ -1,3 +1,6 @@
+//
+// tag cloud
+//
 
 .tags__title {
   font-size: 1.3em;
@@ -22,18 +25,20 @@
   vertical-align: middle;
   padding: 0.5em 0.4em;
   border-radius: 5px;
-  color:$light-font-color;
-  background-color: #C0ECEE;
+  color:#dee2e6;
+  background-color: #51a1a5;
 }
 
 .tag--current {
   font-weight: bold;
-  color: #000000;
+  transform: scale(1.2);
+  box-shadow: 0 0 3px 1px #FFFFFF;
 }
 
 .tag__link {
   color:inherit;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .tag__count {

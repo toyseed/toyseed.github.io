@@ -1,9 +1,9 @@
 ---
 layout: default
 ---
-<section class="post">
+<section class="post content-container">
     <div class="post__top">
-        <div class="post__top__content site-width">
+        <div class="post__top__content site-width content-item">
             <div class="post__title">
                 <h1>{{ page.title }}</h1>
             </div>
@@ -16,13 +16,13 @@ layout: default
             </div>
         </div>
     </div>
-    <div class="post__content markdown-body site-width">
+    <div class="post__content markdown-body site-width content-item">
         {{ content }}
     </div>
 
-    <div class="post__tags site-width">
+    <div class="post__tags site-width content-item">
         {% for tag in page.tags %}
-        <span class="post__tag"><a href="/tag/{{ tag }}/" class="post__tag__link">{{ tag }}</a></span>
+        <span class="post__tag"><a href="/tag/{{ tag }}/" class="post__tag__link">#{{ tag }}</a></span>
         {% endfor %}
     </div>
 </section>
