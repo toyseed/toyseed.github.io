@@ -1,15 +1,18 @@
 ---
 layout: default
 ---
-<div>
-    <h2>{{ page.name }}</h2>
-</div>
-{% for tag in site.tags %}
-    {% if tag[0] == page.name %}
+<div class="tag-posts">
+    {% include tags.html %}
+    <h2 class="tag-posts__title">{{ page.name }}</h2>
+    <div class="tag-posts__list">
         <ul>
-            {% for post in tag[1] %}
-                <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-            {% endfor %}
+        {% for tag in site.tags %}
+            {% if tag[0] == page.name %}
+                {% for post in tag[1] %}
+                    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
         </ul>
-    {% endif %}
-{% endfor %}
+    </div>
+</div>

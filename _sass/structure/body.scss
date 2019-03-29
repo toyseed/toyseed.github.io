@@ -1,8 +1,11 @@
 // for body
+@import "tags";
+
 html, body {
   height: 100%;
 }
 
 .body {
   min-height: 100%;
+  background-color: $body-background-color;
 }

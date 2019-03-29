@@ -1,0 +1,42 @@
+
+.tags__title {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-bottom: 0.2em;
+  display: inline-block;
+}
+
+.tags__body {
+  display: inline-block;
+}
+
+.tags__list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag {
+  display: inline-block;
+  height: 2em;
+  margin-right: 0.5em;
+  vertical-align: middle;
+  padding: 0.5em 0.4em;
+  border-radius: 5px;
+  color:$light-font-color;
+  background-color: #C0ECEE;
+}
+
+.tag--current {
+  font-weight: bold;
+  color: #000000;
+}
+
+.tag__link {
+  color:inherit;
+  cursor: pointer;
+}
+
+.tag__count {
+  font-size:0.6em;
+}
+
