@@ -1,6 +1,7 @@
 ---
 title: 지킬 시작하기
 tags: [jekyll, blogging]
+excerpt_separator: ""
 ---
 
 # [Quickstart](https://jekyllrb.com/docs/)
