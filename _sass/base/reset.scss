@@ -4,6 +4,7 @@
 
 *, *::before, *::after {
   box-sizing: border-box;
+  cursor: default;
 }
 
 * {
@@ -27,7 +28,7 @@ img {
   vertical-align: middle;
 }
 
-label, button {
+label, button, a {
   cursor: pointer;
 }
 

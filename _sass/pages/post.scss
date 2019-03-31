@@ -9,17 +9,21 @@
   padding-top: $content-margin-top;
 }
 
+.post-date {
+  color: $light-font-color;
+}
+
 .post__title {
   h1 {
     font-size: 3em;
   }
 }
 .post__content {
-  padding: 0 1em 1em;
+  padding: 1em;
 }
 
 .post__tags {
-  margin-top: 2em;
+  margin-top: 1.5em;
 }
 
 .post__tag {

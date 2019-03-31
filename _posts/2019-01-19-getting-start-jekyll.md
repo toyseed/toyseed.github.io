@@ -1,7 +1,8 @@
 ---
-title: Getting Start Jekyll
+title: 지킬 시작하기
 tags: [jekyll, blogging]
 ---
+
 # [Quickstart](https://jekyllrb.com/docs/)
 
 ## Instruction
