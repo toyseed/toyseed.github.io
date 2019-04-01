@@ -22,17 +22,15 @@
   display: inline-block;
   height: 2em;
   margin-right: 0.5em;
+  margin-top: 0.5em;
   vertical-align: middle;
   padding: 0.5em 0.4em;
-  border-radius: 5px;
-  color:#dee2e6;
-  background-color: #51a1a5;
+  color:$light-font-color;
 }
 
 .tag--current {
-  font-weight: bold;
-  transform: scale(1.2);
-  box-shadow: 0 0 3px 1px #FFFFFF;
+  color: $base-font-color;
+  border-bottom: 1px solid;
 }
 
 .tag__link {
