@@ -3,6 +3,7 @@ title: 전역 npm 패키지 업데이트 하기
 date: 2019-09-04 23-35
 description: 
 tags: [npm]
+excerpt_separator: ""
 ---
 
 ### 설치된 전역 패키지 확인 명령
