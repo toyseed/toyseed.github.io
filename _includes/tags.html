@@ -4,7 +4,7 @@
             <li class="tag {% if page.name == 'index.html' %}tag--current{% endif %}"><a class="tag__link" href="/">#ALL</a><span class="tag__count">[{{ site.posts.size }}]</span></li>
         {% for tag in site.tags %}
             <li class="tag {% if page.name == tag[0] %} tag--current{% endif %}">
-                <a class="tag__link" href="/tag/{{ tag[0] }}">#{{ tag[0] }}</a><span class="tag__count">[{{ tag[1].size }}]</span>
+                <a class="tag__link" href="/tag/{{ tag[0] }}">#{{tag[0]}}</a><span class="tag__count">[{{tag[1].size}}]</span>
             </li>
         {% endfor %}
         </ul>
