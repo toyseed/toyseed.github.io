@@ -4,7 +4,8 @@
   "description": "toyseed's blog",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "bundler exec jekyll serve"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   "devDependencies": {
     "browser-sync": "^2.26.7",
     "gulp": "^4.0.0",
+    "gulp-imagemin": "^6.1.1",
     "path": "^0.12.7"
   }
 }

@@ -3,7 +3,7 @@
 # https://jekyllrb.com/docs/configuration/default/
 ###################################################
 timezone: Asia/Seoul
-exclude: ["gitignore", "CNAME", "Gemfile", "Gemfile.lock", "gulpfile.js", "package.json", "package-lock.json", "node_modules", ".idea", "toyseed.github.io.iml", "__module", "__root_markup"]
+exclude: ["gitignore", "CNAME", "Gemfile", "Gemfile.lock", "gulpfile.js", "package.json", "package-lock.json", "node_modules", ".idea", "toyseed.github.io.iml", "__module", "__images"]
 markdown: kramdown
 
 permalink: pretty

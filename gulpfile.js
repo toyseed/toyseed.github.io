@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const cp = require('child_process');
 const browserSync = require('browser-sync').create();
 const taggen = require('./__module/taggen');
+const imagemin = require('gulp-imagemin');
 
 const messages = {
   jekyllBuild: '<span style="color: grey">Running:</span> $ jekyll build'
@@ -41,6 +42,15 @@ gulp.task('serve', gulp.series('jekyll-build', 'browserSync'));
 
 gulp.task('taggen', async function () {
   taggen(__dirname, 'tag');
+});
+
+gulp.task('imagemin', async function() {
+  gulp.src('__images/*')
+    .pipe(imagemin({
+      progressive: true,
+      optimizationLevel: 5
+    }))
+    .pipe(gulp.dest('assets/img'));
 });
 
 gulp.task('default', gulp.series('serve', 'watch'));
