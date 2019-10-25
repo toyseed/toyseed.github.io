@@ -88,6 +88,9 @@ body {
 
 /* tag navigation */
 .tag-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1;
   background-color: #fff;
   height: $header-height - 10px;
   margin-top: 1px;
