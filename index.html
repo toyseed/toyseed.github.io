@@ -2,22 +2,19 @@
 title: 장난감 씨앗의 블로그
 permalink: /
 ---
-<div class="blog site-width content-container">
-    <div class="content-item">
-    {% include tags.html %}
-    </div>
-    <div class="posts content-container">
-        {% for post in site.posts %}
-            <div class="posts__item content-item">
-                <div class="posts__item__date">{{ post.date | date_to_string }}</div>
-                <h2 class="posts__item__title"><a class="posts__item__link" href="{{ post.url }}">{{ post.title }}</a></h2>
-                <p class="posts__item__excerpt">{{ post.excerpt | strip_html }}</p>
-                <ul class="posts__item__tags">
-                    {% for tag in post.tags %}
-                        <li class="posts__item__tag">#{{ tag }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
+<div class="post-list_warp">
+  <ol class="post-list">
+    {% for post in site.posts %}
+    <li class="post-list_item">
+      <h2 class="post-list_item_title"><a href="{{ post.url}}" class="post-list_item_link">{{ post.title }}</a></h2>
+      <p class="post-list_item_excerpt">{{ post.excerpt | strip_html }}</p>
+      <span class="post-list_item_date">{{ post.date | date: '%B %d, %Y' }}</span>
+      <ul class="post-list_item_tags">
+        {% for tag in post.tags %}
+        <li class="post-list_item_tag">{{ tag }}</li>
         {% endfor %}
-    </div>
+      </ul>
+    </li>
+    {% endfor %}
+  </ol>
 </div>

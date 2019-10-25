@@ -1,27 +1,70 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
-        {% if jekyll.environment != 'development' %}
-            {% include ga.html %}
-        {% endif %}
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <title>{{ page.title }}</title>
-        <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
-        <link rel="stylesheet" href="/assets/css/styles.css">
-        {% feed_meta %}
-        {% seo %}
-    </head>
-    <body>
-        <div class="body">
-            {% include header.html %}
-            <div class="content">
-                   {{ content }}
-            </div>
+  <head>
+    {% if jekyll.environment != 'development' %} {% include ga.html %} {% endif
+    %}
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    {% feed_meta %} {% seo %}
+    <script
+      src="https://kit.fontawesome.com/25553ed8fd.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <a href="/" class="header-logo">장난감씨앗</a>
+        <nav>
+          {% for item in site.data.header %}
+          <a href="{{ item.link }}" class="header-nav">{{ item.name }}</a>
+          {% endfor %}
+        </nav>
+      </header>
+      <nav class="tag-nav">
+        <ol class="tag-nav_tags">
+          <li
+            class="tag-nav_tag {% if page.name == 'index.html' %}current{% endif %}"
+          >
+            <a href="/">#all</a
+            ><span class="tag-nav_tag_count">{{ site.posts.size }}</span>
+          </li>
+          {% for tag in site.tags %}
+          <li
+            class="tag-nav_tag {% if page.name == tag[0] %}current{% endif %}"
+          >
+            <a href="/tag/{{ tag[0] }}">#{{tag[0]}}</a
+            ><span class="tag-nav_tag_count">{{tag[1].size}}</span>
+          </li>
+          {% endfor %}
+        </ol>
+      </nav>
+      <div class="content">
+        {{ content }}
+      </div>
+
+<!--      footer-->
+      <footer class="footer">
+        <div class="footer-wrap">
+          <span class="footer-name">toyseed</span>
+          <span class="footer-contact">
+            <a href="mailto:toyseed@naver.com" class="contact-email"
+              ><i class="far fa-envelope"></i
+            ></a>
+            <a href="https://github.com/toyseed" class="contact-github"
+              ><i class="fab fa-github-square"></i
+            ></a>
+          </span>
         </div>
-        {% if jekyll.environment != 'development' %}
-            {% include na.html %}
-        {% endif %}
-    </body>
+      </footer>
+<!--      // footer-->
+    </div>
+    {% if jekyll.environment != 'development' %} {% include na.html %} {% endif
+    %}
+  </body>
 </html>
