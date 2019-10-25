@@ -1,24 +1,19 @@
 ---
 layout: default
 ---
-<section class="post content-container">
-    <div class="post__top">
-        <div class="post__top__content site-width content-item">
-            <div class="post-date">
-                {{ page.date | date_to_string}}
-            </div>
-            <div class="post__title">
-                <h1>{{ page.title }}</h1>
-            </div>
-        </div>
-    </div>
-    <div class="post__content markdown-body site-width content-item">
-        {{ content }}
-    </div>
-
-    <div class="post__tags site-width content-item">
-        {% for tag in page.tags %}
-        <span class="post__tag"><a href="/tag/{{ tag }}/" class="post__tag__link">#{{ tag }}</a></span>
-        {% endfor %}
-    </div>
-</section>
+<div class="post-warp">
+  <div class="post-head clearfix">
+    <h1 class="post-head_title">{{ page.title }}</h1>
+    <span class="post-head_date">{{ page.date | date: '%B %d, %Y' }}</span>
+  </div>
+  <div class="post-content markdown-body">
+    {{ content }}
+  </div>
+  <ul class="post-tags">
+    {% for tag in page.tags %}
+    <li class="post-tags_item">
+      <a href="/tag/{{ tag }}" class="post-tags_item_link">{{ tag }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>

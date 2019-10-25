@@ -4,7 +4,7 @@ tags: [jekyll, blogging]
 excerpt_separator: ""
 ---
 
-# [Quickstart](https://jekyllrb.com/docs/)
+지킬의 사용법을 알아보기 위해 [Quickstart](https://jekyllrb.com/docs/) 를 간략하게 번역한 글입니다.
 
 ## Instruction
 
