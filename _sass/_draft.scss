@@ -23,7 +23,7 @@ $content-max-width: 880px;
 
 /* common */
 .wrapper {
-  font-family: serif;
+  font-family: 'Noto Serif KR', serif;
   color: $base-font-color;
 }
 
@@ -75,6 +75,12 @@ body {
 }
 
 .header-nav {
+  // safari 에서 메뉴가 개행되어 나타나는 이슈 수정.
+  width: 100px;
+  text-align: end;
+}
+
+.header-nav_link {
   font-size: .9em;
   margin-left: .3em;
 }
@@ -171,6 +177,9 @@ body {
 }
 
 .footer-contact {
+  width: 100%;
+  text-align: end;
+
   a {
     font-size: 1.2em;
     color: $sub-font-color;

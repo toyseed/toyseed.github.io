@@ -9,6 +9,7 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <title>{{ page.title }}</title>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/styles.css" />
     {% feed_meta %} {% seo %}
     <script
@@ -20,9 +21,9 @@
     <div class="wrapper">
       <header class="header">
         <a href="/" class="header-logo">장난감씨앗</a>
-        <nav>
+        <nav class="header-nav">
           {% for item in site.data.header %}
-          <a href="{{ item.link }}" class="header-nav">{{ item.name }}</a>
+          <a href="{{ item.link }}" class="header-nav_link">{{ item.name }}</a>
           {% endfor %}
         </nav>
       </header>
