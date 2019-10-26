@@ -154,7 +154,6 @@ body {
 /* footer */
 .footer {
   position: relative;;
-
   background-color: #ddd;
 }
 
@@ -168,6 +167,8 @@ body {
 
   padding: 0 $base-gutter;
   margin: 0 auto;
+
+  font-size: 0.8em;
   color: $sub-font-color;
 
   &::before {
