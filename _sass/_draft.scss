@@ -1,8 +1,9 @@
 /* sass variables */
-$header-height: 45px;
+$header-height: 50px;
 $base-font-color: #333;
 $sub-font-color: #868686;
 $content-max-width: 880px;
+$base-gutter: 0.6rem;
 
 /* functions */
 
@@ -64,7 +65,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding: 0 0.3rem 0.3rem;
+  padding: 0 $base-gutter $base-gutter;
 
   font-size: inherit;
   color: inherit;
@@ -72,7 +73,7 @@ body {
 }
 
 .header-logo {
-  font-size: 1.4em;
+  font-size: 1.6em;
 }
 
 .header-nav {
@@ -82,8 +83,8 @@ body {
 }
 
 .header-nav_link {
-  font-size: .9em;
-  margin-left: .3em;
+  font-size: 1em;
+  margin-left: $base-gutter;
 }
 
 /* tag navigation */
@@ -107,7 +108,7 @@ body {
 
   height: 100%;
   display: flex;
-  margin: auto .3rem;
+  margin: auto $base-gutter;
 
 }
 
@@ -165,7 +166,7 @@ body {
   justify-content: space-between;
   align-items: center;
 
-  padding: 0 0.3rem;
+  padding: 0 $base-gutter;
   margin: 0 auto;
   color: $sub-font-color;
 
@@ -181,7 +182,6 @@ body {
 }
 
 .footer-contact {
-  width: 100%;
   text-align: end;
 
   a {
@@ -197,7 +197,7 @@ body {
   max-width: $content-max-width;
   width: 90%;
   margin: 0 auto;
-  padding: 1.5rem 0.3rem 0;
+  padding: 1.5rem $base-gutter 0;
 }
 
 .post-list_item {
@@ -243,7 +243,7 @@ body {
 .post-warp {
   max-width: $content-max-width;
   margin: 0 auto;
-  padding: 1.5rem 0.3rem 0;
+  padding: 1.5rem $base-gutter 0;
 }
 
 .post-head {
@@ -281,9 +281,9 @@ body {
   }
 }
 .post-content img {
-  max-width: calc(100% + 0.6em);
-  width: calc(100% + 0.6em);
-  margin-left: -0.3em;
+  max-width: calc(100% + #{$base-gutter * 2});
+  width: calc(100% + #{$base-gutter * 2});
+  margin-left: -$base-gutter;
 }
 
 .post-tags {
@@ -291,6 +291,9 @@ body {
 }
 
 .post-tags_item {
+  display: inline-block;
+  color: $sub-font-color;
+  font-size: 0.9em;
 }
 
 .post-tags_item_link {
