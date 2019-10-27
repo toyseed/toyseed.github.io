@@ -67,6 +67,11 @@
       </footer>
 <!--      // footer-->
     </div>
+    {% if page.custom_js %}
+      {% for javascript in page.custom_js %}
+      <script src="/assets/js/{{ javascript }}.js"></script>
+      {% endfor %}
+    {% endif %}
     {% if jekyll.environment != 'development' %} {% include na.html %} {% endif
     %}
   </body>
