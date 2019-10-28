@@ -108,7 +108,7 @@ function initBundlerWatch(filepath) {
   }
 
   watcher.on('update', bundle);
-  watcher.on('time', time => console.log(`build in ${time}ms`));
+  watcher.on('time', time => console.log(`build ${filename} in ${time}ms`));
 
   bundle();
 }
