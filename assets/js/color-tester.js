@@ -135,11 +135,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
       position: 'fixed',
       bottom: '2em',
       left: '50%',
+      width: '14em',
       transform: 'translateX(-50%)',
-      height: '4em',
       borderRadius: '10px',
-      lineHeight: '4em',
-      padding: '0 1.4em',
+      padding: '1em 1.4em',
       backgroundColor: 'gray',
       color: 'white',
       opacity: '0'
