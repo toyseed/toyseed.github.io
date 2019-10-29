@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import { combineLatest, fromEvent, merge, of, Subject } from 'rxjs';
-import { map, reduce, switchMap, throttleTime } from 'rxjs/operators';
+import { map, reduce, switchMap, tap, throttleTime } from 'rxjs/operators';
 
 $(document).ready(() => {
   const redRange = $('.color-red .color-range');
@@ -22,14 +22,19 @@ $(document).ready(() => {
   of(redRange, greenRange, blueRange, opacityRange)
     .pipe(
       map(range =>
-        fromEvent(range, 'input').pipe(map(event => event.target.value)),
+        merge(
+          fromEvent(range, 'input').pipe(
+            throttleTime(30),
+            map(event => event.target.value),
+          ),
+          fromEvent(range, 'change').pipe(map(event => event.target.value)),
+        ),
       ),
       reduce((acc, curr) => {
         acc.push(curr);
         return acc;
       }, []),
       switchMap(sources => combineLatest(sources)),
-      throttleTime(30),
       map(([r, g, b, o]) => {
         return { r: +r, g: +g, b: +b, o: +o };
       }),

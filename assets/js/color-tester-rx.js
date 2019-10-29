@@ -30,21 +30,24 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
   var rgbaView = (0, _jquery["default"])('.result .rgba-color');
   var colorSubject$ = new _rxjs.Subject();
   colorSubject$.subscribe(function (color) {
-    return setColor(color);
+    return showColor(color);
   });
   colorSubject$.subscribe(function (color) {
-    return setColorValue(color);
+    return showColorValue(color);
   });
   (0, _rxjs.of)(redRange, greenRange, blueRange, opacityRange).pipe((0, _operators.map)(function (range) {
-    return (0, _rxjs.fromEvent)(range, 'input').pipe((0, _operators.map)(function (event) {
+    return (0, _rxjs.merge)((0, _rxjs.fromEvent)(range, 'input').pipe((0, _operators.throttleTime)(30), (0, _operators.map)(function (event) {
       return event.target.value;
-    }));
+    })), (0, _rxjs.fromEvent)(range, 'change').pipe((0, _operators.map)(function (event) {
+      return event.target.value;
+    })));
   }), (0, _operators.reduce)(function (acc, curr) {
     acc.push(curr);
     return acc;
   }, []), (0, _operators.switchMap)(function (sources) {
     return (0, _rxjs.combineLatest)(sources);
-  }), (0, _operators.throttleTime)(30), (0, _operators.map)(function (_ref) {
+  }), // throttleTime(30),
+  (0, _operators.map)(function (_ref) {
     var _ref2 = _slicedToArray(_ref, 4),
         r = _ref2[0],
         g = _ref2[1],
@@ -86,7 +89,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     toastMessage("'".concat(text, "' is copied on clipboard."));
   });
 
-  function setColor(color) {
+  function showColor(color) {
     (0, _jquery["default"])('.color-box div').each(function () {
       var el = (0, _jquery["default"])(this);
 
@@ -101,7 +104,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     });
   }
 
-  function setColorValue(_ref3) {
+  function showColorValue(_ref3) {
     var r = _ref3.r,
         g = _ref3.g,
         b = _ref3.b,
