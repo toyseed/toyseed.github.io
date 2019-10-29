@@ -9,8 +9,8 @@
 }
 
 .color-box_wrap, .color-controller_wrap {
-  flex: 1 1 50%;
-  min-width: $content-max-width / 2 - 6rem;
+  flex: 1 1 49%;
+  min-width: calc(#{$content-max-width / 2} - 6rem);
 }
 
 .color-box {
