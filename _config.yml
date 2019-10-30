@@ -17,6 +17,7 @@ collections:
 
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
 
 # https://jekyllrb.com/docs/configuration/front-matter-defaults/
 # The defaults key holds an array of scope/values pairs that define what defaults should be set for a particular file path, and optionally, a file type in that path.
