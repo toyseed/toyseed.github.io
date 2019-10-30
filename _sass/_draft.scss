@@ -58,7 +58,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding: 0 $base-gutter $base-gutter;
+  padding: 0 $base-gutter 5px;
 
   font-size: inherit;
   color: inherit;
@@ -94,7 +94,7 @@ body {
 .tag-nav_tags {
   white-space: nowrap;
   overflow-x: auto;
-  font-size: 0.8em;
+  font-size: 0.86em;
   font-family: sans-serif;
   color: $sub-font-color;
   align-items: center;
