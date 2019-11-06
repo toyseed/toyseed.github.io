@@ -11,12 +11,9 @@
 
 .color-box_wrap, .color-controller_wrap {
   flex: 1 1 48%;
-  min-width: 350px;
+  min-width: 300px;
 }
 
-.color-controller_wrap {
-  min-width: 350px;
-}
 .color-box {
   display: flex;
   flex-wrap: wrap;
@@ -94,19 +91,17 @@
     flex-direction: row;
 
     .color-type {
-      //display: inline-block;
       flex: 0 0 4em;
       text-align: center;
     }
     .hex-color, .rgba-color {
-      //display: inline-block;
-      //width: 10em;
       flex: 1 1 10em;
       border-bottom: 1px solid $sub-font-color;
       text-align: center;
     }
 
     .copy {
+      flex: 0 0 3em;
       margin-left: 0.4em;
       font-size: 1.2em;
       border: none;
