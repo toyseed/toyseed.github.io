@@ -1,7 +1,7 @@
 ---
 title: 색상 조합 테스터
 tags: [tool]
-excerpt_separator: ""
+excerpt_separator: ''
 custom_js: [color-tester-rx]
 custom_css: [post/color-tester]
 ---
@@ -47,39 +47,81 @@ custom_css: [post/color-tester]
       <!--    range for r-->
       <div class="color-red">
         <label for="red">R</label>
-        <input class="color-range" type="range" id="red" name="red" min="0" max="255" step="1" value="255">
+        <input
+          class="color-range"
+          type="range"
+          id="red"
+          name="red"
+          min="0"
+          max="255"
+          step="1"
+          value="255"
+        />
         <span class="color-value"></span>
       </div>
       <!--    range for g-->
       <div class="color-green">
         <label for="green">G</label>
-        <input class="color-range" type="range" id="green" name="green" min="0" max="255" step="1" value="255">
+        <input
+          class="color-range"
+          type="range"
+          id="green"
+          name="green"
+          min="0"
+          max="255"
+          step="1"
+          value="255"
+        />
         <span class="color-value"></span>
       </div>
       <!--    range for b-->
       <div class="color-blue">
         <label for="red">B</label>
-        <input class="color-range" type="range" id="blue" name="blue" min="0" max="255" step="1" value="255">
+        <input
+          class="color-range"
+          type="range"
+          id="blue"
+          name="blue"
+          min="0"
+          max="255"
+          step="1"
+          value="255"
+        />
         <span class="color-value"></span>
       </div>
       <!--    range for opacity-->
       <div class="opacity">
         <label for="opacity">Opacity</label>
-        <input class="opacity-range" type="range" id="opacity" name="opacity" min="0" max="1" step="0.01" value="1">
+        <input
+          class="opacity-range"
+          type="range"
+          id="opacity"
+          name="opacity"
+          min="0"
+          max="1"
+          step="0.01"
+          value="1"
+        />
         <span class="opacity-value"></span>
       </div>
       <div class="result">
         <!--    result code in hex-->
-        <span class="color-type">HEX</span><span class="hex-color"></span><button class="copy js-click-hex"><i class="far fa-copy"></i></button><br>
+        <span class="color-type">HEX</span><span class="hex-color"></span
+        ><button class="copy js-click-hex"><i class="far fa-copy"></i></button
+        ><br />
+      </div>
+      <div class="result">
         <!--    result code in rgba-->
-        <span class="color-type">RGBA</span><span class="rgba-color"></span><button class="copy js-click-rgba"><i class="far fa-copy"></i></button>
+        <span class="color-type">RGBA</span><span class="rgba-color"></span
+        ><button class="copy js-click-rgba"><i class="far fa-copy"></i></button>
       </div>
     </div>
   </div>
 </div>
-<hr>
+<hr />
 <article>
   <p>
-    슬라이드를 이동해 r, g, b 와 opacity 값이 변할 때 색의 변화를 확인할 수 있습니다. 그리드를 클릭하면 클릭한 그리드의 rgb 값이 클립보드에 복사됩니다.
+    슬라이드를 이동해 r, g, b 와 opacity 값이 변할 때 색의 변화를 확인할 수
+    있습니다. 그리드를 클릭하면 클릭한 그리드의 rgb 값이 클립보드에 복사됩니다.
   </p>
 </article>
