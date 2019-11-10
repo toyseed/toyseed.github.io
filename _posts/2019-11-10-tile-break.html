@@ -1,0 +1,485 @@
+---
+title: 타일 부수기 게임
+tags: [game]
+excerpt_separator: ''
+custom_js: [tile-break]
+custom_css: [post/tile-break/tile-break-style]
+---
+<div class="tile-break_wrap">
+    <div class="score">
+        <sapn class="score-label">Score:&nbsp;</sapn><span class="score-current">0</span>
+    </div>
+    <!--      create 9 * 9 tiles-->
+    
+    <div class="board">
+        
+            <div style="position:relative" class="board-tile js_board-tile  " data-col="0" data-row="0" data-index="0">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  " data-col="1" data-row="0" data-index="1">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile border-right " data-col="2" data-row="0" data-index="2">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  " data-col="3" data-row="0" data-index="3">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  " data-col="4" data-row="0" data-index="4">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile border-right " data-col="5" data-row="0" data-index="5">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  " data-col="6" data-row="0" data-index="6">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   " data-col="7" data-row="0" data-index="7">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   " data-col="8" data-row="0" data-index="8">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  " data-col="0" data-row="1" data-index="9">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  " data-col="1" data-row="1" data-index="10">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile border-right " data-col="2" data-row="1" data-index="11">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  " data-col="3" data-row="1" data-index="12">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  " data-col="4" data-row="1" data-index="13">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile border-right " data-col="5" data-row="1" data-index="14">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  " data-col="6" data-row="1" data-index="15">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   " data-col="7" data-row="1" data-index="16">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   " data-col="8" data-row="1" data-index="17">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  border-bottom" data-col="0" data-row="2" data-index="18">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  border-bottom" data-col="1" data-row="2" data-index="19">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile border-right border-bottom" data-col="2" data-row="2" data-index="20">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  border-bottom" data-col="3" data-row="2" data-index="21">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  border-bottom" data-col="4" data-row="2" data-index="22">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile border-right border-bottom" data-col="5" data-row="2" data-index="23">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  border-bottom" data-col="6" data-row="2" data-index="24">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   border-bottom" data-col="7" data-row="2" data-index="25">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   border-bottom" data-col="8" data-row="2" data-index="26">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  " data-col="0" data-row="3" data-index="27">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  " data-col="1" data-row="3" data-index="28">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile border-right " data-col="2" data-row="3" data-index="29">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  " data-col="3" data-row="3" data-index="30">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  " data-col="4" data-row="3" data-index="31">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile border-right " data-col="5" data-row="3" data-index="32">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  " data-col="6" data-row="3" data-index="33">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   " data-col="7" data-row="3" data-index="34">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   " data-col="8" data-row="3" data-index="35">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  " data-col="0" data-row="4" data-index="36">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  " data-col="1" data-row="4" data-index="37">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile border-right " data-col="2" data-row="4" data-index="38">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  " data-col="3" data-row="4" data-index="39">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  " data-col="4" data-row="4" data-index="40">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile border-right " data-col="5" data-row="4" data-index="41">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  " data-col="6" data-row="4" data-index="42">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   " data-col="7" data-row="4" data-index="43">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   " data-col="8" data-row="4" data-index="44">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  border-bottom" data-col="0" data-row="5" data-index="45">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  border-bottom" data-col="1" data-row="5" data-index="46">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile border-right border-bottom" data-col="2" data-row="5" data-index="47">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  border-bottom" data-col="3" data-row="5" data-index="48">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  border-bottom" data-col="4" data-row="5" data-index="49">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile border-right border-bottom" data-col="5" data-row="5" data-index="50">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  border-bottom" data-col="6" data-row="5" data-index="51">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   border-bottom" data-col="7" data-row="5" data-index="52">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   border-bottom" data-col="8" data-row="5" data-index="53">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  " data-col="0" data-row="6" data-index="54">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  " data-col="1" data-row="6" data-index="55">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile border-right " data-col="2" data-row="6" data-index="56">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  " data-col="3" data-row="6" data-index="57">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  " data-col="4" data-row="6" data-index="58">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile border-right " data-col="5" data-row="6" data-index="59">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile js_board-tile  " data-col="6" data-row="6" data-index="60">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   " data-col="7" data-row="6" data-index="61">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   " data-col="8" data-row="6" data-index="62">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   " data-col="0" data-row="7" data-index="63">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   " data-col="1" data-row="7" data-index="64">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile  border-right " data-col="2" data-row="7" data-index="65">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   " data-col="3" data-row="7" data-index="66">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   " data-col="4" data-row="7" data-index="67">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile  border-right " data-col="5" data-row="7" data-index="68">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   " data-col="6" data-row="7" data-index="69">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   " data-col="7" data-row="7" data-index="70">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   " data-col="8" data-row="7" data-index="71">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   " data-col="0" data-row="8" data-index="72">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   " data-col="1" data-row="8" data-index="73">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile  border-right " data-col="2" data-row="8" data-index="74">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   " data-col="3" data-row="8" data-index="75">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   " data-col="4" data-row="8" data-index="76">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile  border-right " data-col="5" data-row="8" data-index="77">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   " data-col="6" data-row="8" data-index="78">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   " data-col="7" data-row="8" data-index="79">
+                <div class="tile-inner"></div>
+            </div>
+        
+            <div style="position:relative" class="board-tile   " data-col="8" data-row="8" data-index="80">
+                <div class="tile-inner"></div>
+            </div>
+        
+    </div>
+    <div class="blocks"
+        
+        ><div class="block" data-block-index="0">
+            
+                <div class="block-tile" data-col="0" data-row="0">
+                    <div class="tile-inner"></div>
+                </div>
+            
+                <div class="block-tile" data-col="1" data-row="0">
+                    <div class="tile-inner"></div>
+                </div>
+            
+                <div class="block-tile" data-col="2" data-row="0">
+                    <div class="tile-inner"></div>
+                </div>
+            
+                <div class="block-tile" data-col="0" data-row="1">
+                    <div class="tile-inner"></div>
+                </div>
+            
+                <div class="block-tile" data-col="1" data-row="1">
+                    <div class="tile-inner"></div>
+                </div>
+            
+                <div class="block-tile" data-col="2" data-row="1">
+                    <div class="tile-inner"></div>
+                </div>
+            
+                <div class="block-tile" data-col="0" data-row="2">
+                    <div class="tile-inner"></div>
+                </div>
+            
+                <div class="block-tile" data-col="1" data-row="2">
+                    <div class="tile-inner"></div>
+                </div>
+            
+                <div class="block-tile" data-col="2" data-row="2">
+                    <div class="tile-inner"></div>
+                </div>
+            
+        </div
+        
+        ><div class="block" data-block-index="1">
+            
+                <div class="block-tile" data-col="0" data-row="0">
+                    <div class="tile-inner"></div>
+                </div>
+            
+                <div class="block-tile" data-col="1" data-row="0">
+                    <div class="tile-inner"></div>
+                </div>
+            
+                <div class="block-tile" data-col="2" data-row="0">
+                    <div class="tile-inner"></div>
+                </div>
+            
+                <div class="block-tile" data-col="0" data-row="1">
+                    <div class="tile-inner"></div>
+                </div>
+            
+                <div class="block-tile" data-col="1" data-row="1">
+                    <div class="tile-inner"></div>
+                </div>
+            
+                <div class="block-tile" data-col="2" data-row="1">
+                    <div class="tile-inner"></div>
+                </div>
+            
+                <div class="block-tile" data-col="0" data-row="2">
+                    <div class="tile-inner"></div>
+                </div>
+            
+                <div class="block-tile" data-col="1" data-row="2">
+                    <div class="tile-inner"></div>
+                </div>
+            
+                <div class="block-tile" data-col="2" data-row="2">
+                    <div class="tile-inner"></div>
+                </div>
+            
+        </div
+        
+        ><div class="block" data-block-index="2">
+            
+                <div class="block-tile" data-col="0" data-row="0">
+                    <div class="tile-inner"></div>
+                </div>
+            
+                <div class="block-tile" data-col="1" data-row="0">
+                    <div class="tile-inner"></div>
+                </div>
+            
+                <div class="block-tile" data-col="2" data-row="0">
+                    <div class="tile-inner"></div>
+                </div>
+            
+                <div class="block-tile" data-col="0" data-row="1">
+                    <div class="tile-inner"></div>
+                </div>
+            
+                <div class="block-tile" data-col="1" data-row="1">
+                    <div class="tile-inner"></div>
+                </div>
+            
+                <div class="block-tile" data-col="2" data-row="1">
+                    <div class="tile-inner"></div>
+                </div>
+            
+                <div class="block-tile" data-col="0" data-row="2">
+                    <div class="tile-inner"></div>
+                </div>
+            
+                <div class="block-tile" data-col="1" data-row="2">
+                    <div class="tile-inner"></div>
+                </div>
+            
+                <div class="block-tile" data-col="2" data-row="2">
+                    <div class="tile-inner"></div>
+                </div>
+            
+        </div
+        
+    ></div>
+    <div class="rotate-btns">
+        
+        <button class="rotate-btn" data-index="0">rotate</button>
+        
+        <button class="rotate-btn" data-index="1">rotate</button>
+        
+        <button class="rotate-btn" data-index="2">rotate</button>
+        
+    </div>
+    <div class="replay">
+        <button class="replay-button">replay</button>
+    </div>
+    <div class="gameover">
+        <div class="gameover-title">Game Over</div>
+        <div class="gameover-info">
+            <span>you score is: </span><span class="last-score"></span>
+        </div>
+        <div>
+            <button class="gameover-close">Close</button>
+        </div>
+    </div>
+</div>
