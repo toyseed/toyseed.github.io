@@ -7,7 +7,11 @@ custom_css: [post/tile-break/tile-break-style]
 ---
 <div class="tile-break_wrap">
     <div class="score">
-        <sapn class="score-label">Score:&nbsp;</sapn><span class="score-current">0</span>
+      <span>
+        <sapn class="score-label">Score:&nbsp;</sapn>
+        <span class="score-current">0</span>
+      </span>
+      <button class="replay-button">replay</button>
     </div>
     <!--      create 9 * 9 tiles-->
     
@@ -470,9 +474,6 @@ custom_css: [post/tile-break/tile-break-style]
         <button class="rotate-btn" data-index="2">rotate</button>
         
     </div>
-    <div class="replay">
-        <button class="replay-button">replay</button>
-    </div>
     <div class="gameover">
         <div class="gameover-title">Game Over</div>
         <div class="gameover-info">
@@ -487,7 +488,7 @@ custom_css: [post/tile-break/tile-break-style]
 <p>
   <h4>게임 규칙</h4>
   <ul>
-    <li>하단 제시된 9x9 블럭을 보드로 옮깁니다.</li>
+    <li>하단 제시된 3x3 블럭을 보드로 옮깁니다.</li>
     <li>블럭의 모든 칸이 보드 안에 포함되어야 블럭을 보드에 올릴 수 있습니다.</li>
     <li>블럭이 보드의 굵은 선으로 지정된 영역을 채우거나 가로/세로 한 줄이 완성되면 해당 영역은 비워지고 다시 블럭을 올릴 수 있습니다.</li>
     <li>rotate 버튼을 이용해서 블럭을 회전할 수 있습니다.</li>
