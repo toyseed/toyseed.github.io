@@ -94,6 +94,7 @@ body {
 .tag-nav_tags {
   white-space: nowrap;
   overflow-x: auto;
+  overflow-y: hidden;
   font-size: 0.86em;
   font-family: sans-serif;
   color: $sub-font-color;
@@ -110,7 +111,7 @@ body {
   display: inline-block;
   flex-shrink: 0;
   margin-right: 1em;
-  margin-top: 0.4rem;
+  margin-top: 0.3rem;
 
   &.current {
     color: $base-font-color;
