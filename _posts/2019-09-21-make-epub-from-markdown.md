@@ -32,11 +32,18 @@ epub 파일을 생성할 때 `--css` 옵션을 이용하면 epub 생성에 사�
 
 ### 유용한 옵션
 
+1. `-t`: 출력 포멧을 지정한다.
 1. `-toc`, `--table-of-contents`: 목차를 생성해서 결과물에 포함시킨다.
 1. `--toc-depth`: 목차에 포함시킬 heading 의 깊이를 정한다. 기본값은 3이다.
+1. `--css`: epub 생성에 사용할 css 파일을 지정한다.
+1. `--epub-cover-image`: epub 파일의 커버 이미지 파일을 지정한다.
+  
+**사용예)**  
+`pandoc source.md -o dest.epub -t epub3 --toc --toc-depth=3 --css=mystyle.css --epub-cover-image=mycover.jpg`
  
 ## 참고
 
 - [pandoc에서 사용할 수 있는 소스 포멧](https://pandoc.org/MANUAL.html#option--from)
 - [pandoc에서 사용할 수 있는 목적 포멧](https://pandoc.org/MANUAL.html#option--to)
 - [github markdown css](https://github.com/sindresorhus/github-markdown-css)
+- [My EPUB CSS file + Pandoc Resources](https://www.penned.blog/my-epub-css-file-plus-pandoc-resources/)
