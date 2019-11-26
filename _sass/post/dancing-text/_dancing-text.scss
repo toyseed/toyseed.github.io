@@ -1,15 +1,15 @@
 .dancing-text {
-  font-size: 12px;
-  line-height: 12px;
+  font-size: 10px;
+  line-height: 10px;
   font-weight: 900;
   height: 65vh;
   overflow: hidden;
   margin: 0;
   word-break: break-all;
   background: url("/assets/img/8TAbG5Kqc.gif") no-repeat;
-  background-size: auto;
+  background-size: contain;
   background-position: center;
-  background-attachment: fixed;
+  //background-attachment: fixed;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: rgba(255, 255, 255, 0);
