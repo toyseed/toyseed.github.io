@@ -1,6 +1,6 @@
 - name: 소개
   link: /about
-- name: 글
-  link: /
+#- name: 글
+#  link: /
 #- name: 태그
 #  link: /tags/

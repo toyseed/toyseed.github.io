@@ -67,6 +67,7 @@ body {
 
 .header-logo {
   font-size: 1.6em;
+  text-shadow: 2px 2px rgba(255, 0, 0, 0.2), -2px -2px rgba(0, 0, 255, 0.2);
 }
 
 .header-nav {
@@ -104,6 +105,10 @@ body {
   display: flex;
   margin: auto $base-gutter;
 
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
 }
 
 .tag-nav_tag {
@@ -155,7 +160,7 @@ body {
 }
 
 .footer-wrap {
-  max-width: $content-max-width;
+  //max-width: $content-max-width;
   height: 100%;
 
   display: flex;
@@ -251,12 +256,13 @@ body {
 
 .post-head_title {
   margin-top: 2rem;
-  margin-bottom: 0.6rem;
+  margin-bottom: 1rem;
   word-break: keep-all;
 }
 
 .post-head_date {
   color: $sub-font-color;
+  font-size: 0.8rem;
 }
 
 .post-content {
