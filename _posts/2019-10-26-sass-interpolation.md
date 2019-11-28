@@ -1,6 +1,6 @@
 ---
 title: css 함수에서 sass 변수 사용하기
-tags: [sass]
+tags: [sass, css]
 excerpt_separator: ""
 ---
 
