@@ -1,10 +1,10 @@
 ---
-title: 데본싱크 마크다운에 syntax highlight 적용하기
+title: 데본씽크 마크다운에 syntax highlight 적용하기
 tags: [devonthink]
 excerpt_separator: ""
 ---
 
-데본싱크 마크다운에 css 를 embed 시켜 스타일을 적용한 것처럼 마크다운에 js 파일도 embed 할 수 있다. 이를 이용하면 마크다운 코드블럭에 syntax highlight 를 적용할 수 있다.  
+데본씽크 마크다운에 css 를 embed 시켜 스타일을 적용한 것처럼 마크다운에 js 파일도 embed 할 수 있다. 이를 이용하면 마크다운 코드블럭에 syntax highlight 를 적용할 수 있다.  
   
 `prism` 은 다양한 언어의 syntax highlight 를 지원해 주는 라이브러리다. prism 라이브러리의 스크립트와 css 를 마크다운에 embed 시켜서 마크다운 코드블럭에 syntax highlight 가 적용되게 할 수 있다.  단 코드블럭에 언어 종류를 기술할 때 prism 스펙에 맞게 language-xxx 형태가 되어야한다. 가령 css 코드를 코드 블럭으로 지정할 경우 아래와 같이 작성해야한다.
                                 
