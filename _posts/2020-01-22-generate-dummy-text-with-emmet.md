@@ -8,6 +8,10 @@ vscode 에는 [dummy text generator](https://marketplace.visualstudio.com/items?
   
 에디터에서 `lorem`, 혹은 `lipsum` 을 입력한 후 `tab` 키를 누르면 dummy text 가 만들어 진다. 기본적으로 30글자의 dummy text 가 만들어지며 `lorem100` 과 같은 형태로 원하는 길이를 지정할 수도 있다. `emmet` 에서 지원하는 기능인 만큼 `p*4>lorem` 과 같은 형태로 dummy text 로 채워진 태그를 만들 수도 있다. 
 
-## 참조
+단, 이 기능은 emmet plugin 의 기능이기 때문에 `html` 과 `css` 에서만 사용할 수 있다. 이외 파일에서 사용하려면 별도 플러그인을 설치해야 하며 vscode 에 있는 그것보다 기능이 떨어지는 것 같다.
+
+---
+
+### 참조
 
 - <https://docs.emmet.io/abbreviations/lorem-ipsum/>

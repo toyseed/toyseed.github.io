@@ -279,6 +279,10 @@ body {
     list-style: decimal;
   }
 
+  hr {
+    height: 1px;
+  }
+
   &::after, &::before {
     content: " ";
     display: block;
