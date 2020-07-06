@@ -19,22 +19,26 @@
   },
   "homepage": "https://github.com/toyseed/toyseed.github.io#readme",
   "devDependencies": {
-    "@babel/core": "^7.6.4",
-    "@babel/preset-env": "^7.6.3",
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "babel-loader": "^8.1.0",
     "babelify": "^10.0.0",
     "browser-sync": "^2.26.7",
     "browserfy": "^1.0.0",
     "browserify": "^16.5.0",
+    "glob": "^7.1.6",
     "gulp": "^4.0.0",
     "gulp-imagemin": "^6.1.1",
-    "moment": "^2.24.0",
+    "moment": "^2.27.0",
     "path": "^0.12.7",
     "prettier": "^1.18.2",
     "vinyl-source-stream": "^2.0.0",
-    "watchify": "^3.11.1"
+    "watchify": "^3.11.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
   },
   "dependencies": {
-    "jquery": "^3.4.1",
-    "rxjs": "^6.5.3"
+    "jquery": "^3.5.1",
+    "rxjs": "^6.6.0"
   }
 }
