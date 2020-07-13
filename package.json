@@ -41,6 +41,6 @@
   "dependencies": {
     "jquery": "^3.5.1",
     "rxjs": "^6.6.0",
-    "wasm-game-of-life": "file:./__external/wasm-game-of-life"
+    "wasm-game-of-life": "file:../__external/wasm-game-of-life"
   }
 }

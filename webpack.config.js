@@ -6,7 +6,11 @@ const path = require("path");
 module.exports = {
   mode: "production",
   watch: true,
-  entry: path.join(__dirname, "__js/post/game-of-life", "game-of-life.js"),
+  entry: {
+    "game-of-life": path.join(__dirname, "__js/post/game-of-life", "game-of-life.js"),
+    "tile-break": path.join(__dirname, "__js/post/tile-break", "tile-break.js"),
+    "color-tester": path.join(__dirname, "__js/post/color-tester", "color-tester-rx.js"),
+  },
   output: {
     filename: "[name]-bundle.js",
     path: path.resolve(__dirname, "assets/js"),

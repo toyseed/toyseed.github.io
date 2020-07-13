@@ -3,7 +3,22 @@
 # https://jekyllrb.com/docs/configuration/default/
 ###################################################
 timezone: Asia/Seoul
-exclude: ["gitignore", "CNAME", "Gemfile", "Gemfile.lock", "gulpfile.js", "package.json", "package-lock.json", "node_modules", ".idea", "toyseed.github.io.iml", "__module", "__images"]
+exclude:
+  [
+    'webpack.config.js',
+    'gitignore',
+    'CNAME',
+    'Gemfile',
+    'Gemfile.lock',
+    'gulpfile.js',
+    'package.json',
+    'package-lock.json',
+    'node_modules',
+    '.idea',
+    'toyseed.github.io.iml',
+    '__module',
+    '__images',
+  ]
 markdown: kramdown
 highlighter: rouge
 permalink: pretty
@@ -24,17 +39,17 @@ plugins:
 defaults:
   - scope:
       # an empty string here means all files in the project
-      path: ""
+      path: ''
       # The different types that are available to you are pages, posts, drafts or any collection in your site
-      type: "posts"
+      type: 'posts'
     values:
-      layout: "post"
+      layout: 'post'
   - scope:
-      path: ""
-      type: "tag"
+      path: ''
+      type: 'tag'
     values:
-      layout: "tagpostlist"
+      layout: 'tagpostlist'
   - scope:
-      path: ""
+      path: ''
     values:
-      layout: "default"
+      layout: 'default'
