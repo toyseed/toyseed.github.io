@@ -115,5 +115,6 @@ function initBundlerWatch(filepath) {
 
 gulp.task(
   'default',
-  gulp.parallel(gulp.series('serve', 'watch'), 'watch:babel'),
+  // gulp.parallel(gulp.series('serve', 'watch'), 'watch:babel'),
+  gulp.parallel(gulp.series('serve', 'watch')),
 );

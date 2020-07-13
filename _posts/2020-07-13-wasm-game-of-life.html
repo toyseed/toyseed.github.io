@@ -1,0 +1,18 @@
+---
+title: 인생게임 with rust wasm
+tag: [rust]
+excerpt_separator: ''
+custom_js: [main-bundle]
+---
+<div class="game-of-life">
+    <div class="controls">
+        <button id="play-pause"></button>
+        <label for="tick_per_frame">tick per frame</label>
+        <input id="tick_per_frame" min="1" max="10" step="1" type="range">
+        <span id="tick_per_frame_value"></span>
+        <button id="random">random</button>
+        <button id="reset">reset</button>
+    </div>
+    <canvas id="game-of-life-canvas"></canvas>
+    <div id="fps"></div>
+</div>
