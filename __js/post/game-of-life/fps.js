@@ -25,12 +25,12 @@ export class Fps {
             max = Math.max(this.frames[i], max);
         }
         let mean = sum / this.frames.length;
-        this.fps.textContent = `
-Frames per Second:
-latest = ${Math.round(fps)}
-avg of last 100 = ${Math.round(mean)}        
-min of last 100 = ${Math.round(min)}
-max of last 100 = ${Math.round(max)}
+        this.fps.innerHTML= `
+<span>Frames per Second:</span>
+<span>latest = ${Math.round(fps)}</span>
+<span>avg of last 100 = ${Math.round(mean)}</span>        
+<span>min of last 100 = ${Math.round(min)}</span>
+<span>max of last 100 = ${Math.round(max)}</span>
         `.trim();
     }
 }

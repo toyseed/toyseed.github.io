@@ -3,16 +3,38 @@ title: 인생게임 with rust wasm
 tags: [rust]
 excerpt_separator: ''
 custom_js: [game-of-life-bundle]
+custom_css: [post/game-of-life/game-of-life]
 ---
+
 <div class="game-of-life">
-    <div class="controls">
-        <button id="play-pause"></button>
-        <label for="tick_per_frame">tick per frame</label>
-        <input id="tick_per_frame" min="1" max="10" step="1" type="range">
-        <span id="tick_per_frame_value"></span>
-        <button id="random">random</button>
-        <button id="reset">reset</button>
+  <div class="controls">
+    <div class="lang">
+      <span class="wasm">
+        <input type="radio" name="lang" id="wasm_checkbox" value="wasm" checked>
+        <label for="wasm_checkbox">wasm</label>
+      </span>
+      <span class="js">
+        <input type="radio" name="lang" id="js_checkbox" value="js">
+        <label for="js_checkbox">javascript</label>
+      </span>
     </div>
-    <canvas id="game-of-life-canvas"></canvas>
-    <div id="fps"></div>
+    <div class="play">
+      <button id="play-pause"></button>
+      <button id="random">random</button>
+      <button id="reset">reset</button>
+    </div>
+    <div class="tick">
+      <label for="tick_per_frame">tick per frame</label>
+      <input id="tick_per_frame" min="1" max="1000" step="1" type="range" />
+      <span id="tick_per_frame_value"></span>
+    </div>
+  </div>
+  <canvas id="game-of-life-canvas"></canvas>
+  <div id="fps"></div>
 </div>
+<hr/>
+<p>
+rust wasm tutorial을 본 겸 js보다 얼마나 성능상에 이점이 있을까 해서 js로도 같은 코드를 짜서 테스트해보았으나 결과는 대 실패. 애초에 canvas rendering 속도 때문에 제대로된 비교를 할 수 없었다.
+  단순한 계산이라 그런지 dev tool에서 실행시간을 확인해봐도 wasm적용을 위한 노력대비 유의미한 성능차이인가 싶기도하다. (256x256 그리드 기준, 한번의 tick을 계산하는데 wasm은 1ms걸렸고 js는 2ms정도 걸렸다.) 워낙 기능이 작기도 한데다 wasm-bindgen도 영향을 준 탓인지 바이너리의 크기에서도 이점을 얻지 못했다.
+  아무래도 wasm의 혜택을 보려면 많은 공부가 필요할 것같다.
+</p>

@@ -1,68 +1,88 @@
-import { Universe, Cell, init_panic_hook } from "wasm-game-of-life";
-import { memory } from "wasm-game-of-life/wasm_game_of_life_bg";
-import { JsUniverse } from "./js-universe";
-import { Fps } from "./fps";
+import { Universe, Cell, init_panic_hook } from 'wasm-game-of-life';
+import { memory } from 'wasm-game-of-life/wasm_game_of_life_bg';
+import { JsUniverse } from './js-universe';
+import { Fps } from './fps';
 
 init_panic_hook();
 
 const frame = new Fps();
 const CELL_SIZE = 5;
-const GRID_COLOR = "#cccccc";
-const DEAD_COLOR = "#ffffff";
-const ALIVE_COLOR = "#000000";
+const GRID_COLOR = '#cccccc';
+const DEAD_COLOR = '#ffffff';
+const ALIVE_COLOR = '#000000';
 
-const universe = Universe.new(256, 256);
-// const universe = new JsUniverse(64, 64);
-const isWasm = universe instanceof Universe;
+let gridSize = 128;
+let universe = Universe.new(gridSize, gridSize);
+let isWasm = universe instanceof Universe;
+
+document.getElementsByName('lang').forEach(node => {
+  node.addEventListener('change', event => {
+    if (!event.target.checked) {
+      return;
+    }
+
+    pause();
+
+    if (event.target.value === 'wasm') {
+      universe = Universe.new(gridSize, gridSize);
+      isWasm = true;
+    } else {
+      universe = new JsUniverse(gridSize, gridSize);
+      isWasm = false;
+    }
+
+    play();
+  });
+});
 const width = universe.width();
 const height = universe.height();
 
-const canvas = document.getElementById("game-of-life-canvas");
+const canvas = document.getElementById('game-of-life-canvas');
 canvas.width = (CELL_SIZE + 1) * width + 1;
 canvas.height = (CELL_SIZE + 1) * height + 1;
 
-const ctx = canvas.getContext("2d");
+const ctx = canvas.getContext('2d');
 
 let before = new Date().getTime();
-const fps = 15;
+const fps = 60;
 const interval = (1000 / fps) | 0;
 
 let altPressed = false;
 let shiftPressed = false;
-window.addEventListener("keydown", (event) => {
+window.addEventListener('keydown', event => {
   altPressed = event.altKey;
   shiftPressed = event.shiftKey;
 });
 
-window.addEventListener("keyup", (event) => {
+window.addEventListener('keyup', event => {
   altPressed = event.altKey;
   shiftPressed = event.shiftKey;
 });
 
-const randomButton = document.getElementById("random");
-randomButton.addEventListener("click", (event) => {
+const randomButton = document.getElementById('random');
+randomButton.addEventListener('click', event => {
   universe.random_cells(
     (Math.random() * 10 + 1) | 0,
-    (Math.random() * 10 + 1) | 0
+    (Math.random() * 10 + 1) | 0,
   );
 });
-const resetButton = document.getElementById("reset");
-resetButton.addEventListener("click", (event) => {
+const resetButton = document.getElementById('reset');
+resetButton.addEventListener('click', event => {
   universe.reset_cells();
 });
 
-const tickPerFrameRange = document.getElementById("tick_per_frame");
-const tickPerFameValue = document.getElementById("tick_per_frame_value");
+const tickPerFrameRange = document.getElementById('tick_per_frame');
+const tickPerFameValue = document.getElementById('tick_per_frame_value');
 tickPerFrameRange.value = tickPerFrameRange.min;
 let tickPerFrame = tickPerFrameRange.valueAsNumber;
 tickPerFameValue.textContent = tickPerFrame;
 
-tickPerFrameRange.addEventListener("change", (event) => {
+tickPerFrameRange.addEventListener('change', event => {
   tickPerFrame = tickPerFrameRange.valueAsNumber;
   tickPerFameValue.textContent = tickPerFrame;
 });
 
-const playPauseButton = document.getElementById("play-pause");
+const playPauseButton = document.getElementById('play-pause');
 
 let animationId = null;
 const isPause = () => {
@@ -70,17 +90,17 @@ const isPause = () => {
 };
 
 const play = () => {
-  playPauseButton.textContent = "⏸";
+  playPauseButton.textContent = '⏸';
   renderLoop();
 };
 
 const pause = () => {
-  playPauseButton.textContent = "▶";
+  playPauseButton.textContent = '▶';
   cancelAnimationFrame(animationId);
   animationId = null;
 };
 
-playPauseButton.addEventListener("click", (event) => {
+playPauseButton.addEventListener('click', event => {
   if (isPause()) {
     play();
   } else {
@@ -88,7 +108,7 @@ playPauseButton.addEventListener("click", (event) => {
   }
 });
 
-canvas.addEventListener("click", (event) => {
+canvas.addEventListener('click', event => {
   const boundingRect = canvas.getBoundingClientRect();
 
   const scaleX = canvas.width / boundingRect.width;
@@ -119,7 +139,6 @@ const renderLoop = () => {
 
   if (gap > interval) {
     before = new Date().getTime() - (gap % interval);
-    // ctx.clearRect(0, 0, width, height);
     drawGrid();
     drawCell();
     // drawFrame();
@@ -185,10 +204,10 @@ const drawCell = () => {
       }
 
       ctx.fillRect(
-          col * (CELL_SIZE + 1) + 1,
-          row * (CELL_SIZE + 1) + 1,
-          CELL_SIZE,
-          CELL_SIZE
+        col * (CELL_SIZE + 1) + 1,
+        row * (CELL_SIZE + 1) + 1,
+        CELL_SIZE,
+        CELL_SIZE,
       );
     }
   }
@@ -206,7 +225,7 @@ const drawCell = () => {
         col * (CELL_SIZE + 1) + 1,
         row * (CELL_SIZE + 1) + 1,
         CELL_SIZE,
-        CELL_SIZE
+        CELL_SIZE,
       );
     }
   }
