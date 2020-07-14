@@ -40,6 +40,7 @@
     "webpack-dev-server": "^3.1.5"
   },
   "dependencies": {
+    "imagemin-webpack-plugin": "^2.4.2",
     "jquery": "^3.5.1",
     "rxjs": "^6.6.0",
     "wasm-game-of-life": "file:../__external/wasm-game-of-life"

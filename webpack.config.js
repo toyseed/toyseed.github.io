@@ -41,7 +41,8 @@ module.exports = {
       host: 'localhost',  //localhost로 사용
       port: 3000,			//포트 3000을 사용  (이미 사용중이면 1씩 증가된 포트로 사용)
       files: ['./_site/**/*'], //해당 경로 내 html 파일이 자동으로 동기화 (이 부분이 없으면 html파일 변경사항은 자동 동기화 안됨)
-      server: {baseDir: ['_site']} // server의 Base 디렉토리를 dist로 지정
-    })
+      server: {baseDir: ['_site']}, // server의 Base 디렉토리를 dist로 지정,
+      browser: 'google chrome'
+    }),
   ]
 }
