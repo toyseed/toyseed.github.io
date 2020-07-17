@@ -3,6 +3,7 @@
 # https://jekyllrb.com/docs/configuration/default/
 ###################################################
 timezone: Asia/Seoul
+repository: toyseed/toyseed.github.io
 exclude:
   [
     'webpack.config.js',
