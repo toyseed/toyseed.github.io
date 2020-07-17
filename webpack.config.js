@@ -11,6 +11,7 @@ module.exports = {
     "game-of-life": path.join(__dirname, "__js/post/game-of-life", "game-of-life.js"),
     "tile-break": path.join(__dirname, "__js/post/tile-break", "tile-break.js"),
     "color-tester": path.join(__dirname, "__js/post/color-tester", "color-tester-rx.js"),
+    "about": path.join(__dirname, "__js", "about.js"),
   },
   output: {
     filename: "[name]-bundle.js",
