@@ -27,7 +27,6 @@ $base-animation-delay: 3s;
 
     opacity: 0;
     animation: star infinite;
-    //animation-delay: $base-animation-delay + $base-animation-duration;
   }
 }
 
@@ -78,6 +77,8 @@ $base-animation-delay: 3s;
   position: absolute;
   margin-top: 2em;
   color: #fff;
+  width: 100%;
+  text-align: center;
 
   @include center;
 
