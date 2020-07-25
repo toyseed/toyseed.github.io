@@ -4,6 +4,11 @@ import historys from './lottery-history.json';
   const winningHistory = historys.map(history => history.nums.slice(0, 6));
 
   _.addEventListener('load', _ => {
+    const storage = window.localStorage;
+    const storeKey = 'localHistory';
+    const localHistory = JSON.parse((storage.getItem(storeKey) || '[]'));
+    console.log('local history: ', localHistory);
+
     const baseEl = document.querySelector('.lottery-generator');
     let gameCountEl = baseEl.querySelector('._game-count-value');
     let gameCount = parseInt(gameCountEl.innerText);
@@ -15,6 +20,8 @@ import historys from './lottery-history.json';
     makeNumsIncludedLayer(baseEl);
     // make nums excluded select area
     makeNumsExcludedLayer(baseEl);
+    // TODO: show local history
+
     document
       .getElementById('game-count-range')
       .addEventListener('change', evt => {
@@ -40,6 +47,8 @@ import historys from './lottery-history.json';
           excludeWinningNums,
         );
         showGeneratedNums(nums);
+        localHistory.push({time: new Date().getTime(), nums: nums});
+        storage.setItem(storeKey, JSON.stringify(localHistory));
       } else if (hasClass(el, '_cancel-included')) {
         // hide
         baseEl.querySelector('._nums-included-layer').style.display = 'none';
