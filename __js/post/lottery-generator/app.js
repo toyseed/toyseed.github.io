@@ -1,7 +1,7 @@
 import historys from './lottery-history.json';
 
 (_ => {
-  const winningHistory = historys.map(history => history.nums);
+  const winningHistory = historys.map(history => history.nums.slice(0, 6));
 
   _.addEventListener('load', _ => {
     const baseEl = document.querySelector('.lottery-generator');
