@@ -76,12 +76,12 @@ import historys from './lottery-history.json';
     const result = [];
     const base = includes.filter(include => excludes.indexOf(include) === -1);
 
-    if (base.length >= 7) {
-      for (let i = 0; i <= base.length - 7; i++) {
-        let candidate = base.slice(i, i + 7);
+    if (base.length >= 6) {
+      for (let i = 0; i <= base.length - 6; i++) {
+        let candidate = base.slice(i, i + 6);
 
         if (exceptHistory && !winningHistory.contains(candidate)) {
-          result.push(base.slice(i, i + 7));
+          result.push(base.slice(i, i + 6));
         }
 
         if (result.length === 10) {
@@ -96,7 +96,7 @@ import historys from './lottery-history.json';
 
     while (result.length < count) {
       let seed = base.slice();
-      while (seed.length < 7) {
+      while (seed.length < 6) {
         let num = randomLotteryNum();
 
         if (seed.contains(num) || excludes.contains(num)) {
