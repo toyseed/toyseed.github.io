@@ -1,0 +1,75 @@
+---
+title: 로또 번호 생성기 v0.5
+tags: [game]
+excerpt_separator: ''
+custom_js: [lottery-generator-bundle]
+custom_css: [post/lottery-generator/style]
+---
+
+<div class="lottery-generator">
+  <!--
+    어떤 옵션을 줄 수 있을까?
+    - 생성할 번호 개수
+    - 1등 당첨번호와 중복 허용
+    - 필수 번호 지정?
+    - 뺄번호
+    로또 번호는 1~45
+    -->
+  <div class="lottery-generator__options">
+    <span class="options__item">
+      <label for="game-count-range">총 게임 수</label>
+      <input
+        type="range"
+        value="10"
+        min="1"
+        max="10"
+        step="1"
+        name="game-count"
+        class="_game-count-range"
+        id="game-count-range"
+      />
+      <span class="_game-count-value">10</span>
+    </span>
+    <span class="options__item">
+      <span>포함할 번호</span>
+      <span class="_nums-included"></span>
+      <button class="_show-nums-included">선택</button>
+    </span>
+    <span class="options__item">
+      <span>제외할 번호</span>
+      <span class="_nums-excluded"></span>
+      <button class="_show-nums-excluded">선택</button>
+    </span>
+    <span class="options__item">
+      <input type="checkbox" class="_exclude-history" id="exclude-history" />
+      <label for="exclude-history">당첨된 적이 있는 번호 제외</label>
+    </span>
+    <span class="options__item">
+      <button class="_generate">번호 만들기</button>
+    </span>
+  </div>
+  <hr>
+  <h3>생성된 번호</h3>
+  <div class="_generated-nums generation-results"></div>
+  <hr>
+
+<!--  <h3>번호별 추첨 횟수</h3>-->
+<!--  <div class="static-by-num"></div>-->
+
+  <div class="nums-select-layer _nums-included-layer">
+    <h5>포함할 번호</h5>
+    <div class="_nums-area"></div>
+    <div class="num-select-layer-button-area">
+      <button class="_cancel-included">취소</button>
+      <button class="_confirm-included">확인</button>
+    </div>
+  </div>
+  <div class="nums-select-layer _nums-excluded-layer">
+    <h5>제외할 번호</h5>
+    <div class="_nums-area"></div>
+    <div class="num-select-layer-button-area">
+      <button class="_cancel-excluded">취소</button>
+      <button class="_confirm-excluded">확인</button>
+    </div>
+  </div>
+</div>
