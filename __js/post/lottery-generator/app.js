@@ -6,7 +6,7 @@ import historys from './lottery-history.json';
   _.addEventListener('load', _ => {
     const storage = window.localStorage;
     const storeKey = 'localHistory';
-    const localHistory = JSON.parse((storage.getItem(storeKey) || '[]'));
+    const localHistory = JSON.parse(storage.getItem(storeKey) || '[]');
     console.log('local history: ', localHistory);
 
     const baseEl = document.querySelector('.lottery-generator');
@@ -21,6 +21,8 @@ import historys from './lottery-history.json';
     // make nums excluded select area
     makeNumsExcludedLayer(baseEl);
     // TODO: show local history
+    // TODO: show stat
+    showStat(baseEl);
 
     document
       .getElementById('game-count-range')
@@ -47,7 +49,7 @@ import historys from './lottery-history.json';
           excludeWinningNums,
         );
         showGeneratedNums(nums);
-        localHistory.push({time: new Date().getTime(), nums: nums});
+        localHistory.push({ time: new Date().getTime(), nums: nums });
         storage.setItem(storeKey, JSON.stringify(localHistory));
       } else if (hasClass(el, '_cancel-included')) {
         // hide
@@ -74,12 +76,73 @@ import historys from './lottery-history.json';
           ',',
         );
         baseEl.querySelector('._nums-excluded-layer').style.display = 'none';
+      } else if (hasClass(el, '_show-winning-static')) {
+        el.classList.add('selected');
+        baseEl
+          .querySelector('._show-generation-history')
+          .classList.remove('selected');
+        baseEl.querySelector('._winning-static').classList.remove('hide');
+        baseEl.querySelector('._generation-history').classList.add('hide');
+      } else if (hasClass(el, '_show-generation-history')) {
+        el.classList.add('selected');
+        baseEl
+          .querySelector('._show-winning-static')
+          .classList.remove('selected');
+        baseEl.querySelector('._winning-static').classList.add('hide');
+        baseEl.querySelector('._generation-history').classList.remove('hide');
       }
     });
-    // const statByNum = generateStatByNum();
-
-    // showStatByNum(statByNum);
   });
+
+  const showStat = baseEl => {
+    const byNum = [];
+    const byColor = [];
+
+    let maxNumCount = -1;
+    let maxColorCount = -1;
+
+    for (let history of winningHistory) {
+      for (let num of history) {
+        byNum[num] = (byNum[num] || 0) + 1;
+        const color = ((num - 1) / 10) | 0;
+        byColor[color] = (byColor[color] || 0) + 1;
+
+        if (byNum[num] > maxNumCount) {
+          maxNumCount = byNum[num];
+        }
+
+        if (byColor[color] > maxColorCount) {
+          maxColorCount = byColor[color];
+        }
+      }
+    }
+
+    const byColorArea = baseEl.querySelector('._color-history');
+    const byColorMarkup = [];
+    byColorMarkup.push('<ol>');
+    byColor.forEach((count, color) => {
+      const width = ((count / maxColorCount) * 100) / 2;
+      byColorMarkup.push(
+        `<li><span class="ball mini ball-color-${color}">&nbsp;</span><span class="bar" style="width:${width}%">&nbsp;</span><span>${count}</span></span></li>`,
+      );
+    });
+    byColorMarkup.push('</ol>');
+    byColorArea.innerHTML = byColorMarkup.join('');
+
+    console.log(byColor, maxColorCount);
+    const byNumArea = baseEl.querySelector('._num-history');
+    const byNumMarkup = [];
+    byNumMarkup.push('<ol>');
+    byNum.forEach((count, num) => {
+      const width = ((count / maxNumCount) * 100) / 2;
+      const color = (num - 1) / 10 | 0;
+      byNumMarkup.push(
+        `<li><span class="ball mini ball-color-${color}">${num}</span><span class="bar" style="width:${width}%">&nbsp;</span><span>${count}</span></span></li>`,
+      );
+    })
+    byNumMarkup.push('</ol>');
+    byNumArea.innerHTML = byNumMarkup.join('');
+  };
 
   const generateNums = (count, includes, excludes, exceptHistory) => {
     const result = [];
@@ -128,47 +191,32 @@ import historys from './lottery-history.json';
     return result;
   };
 
-  const randSeed = [];
+  let randSeed = [];
   for (let i = 1; i <= 45; i++) {
     randSeed.push(i);
   }
 
   const randomLotteryNum = () => {
-    let seed = randSeed.suffled();
-    let index = Math.round(Math.random() * (seed.length - 1));
+    const shuffle = Math.round(Math.random() * 8);
+    for (let i = 0; i < shuffle; i++) {
+      randSeed = randSeed.suffled();
+    }
 
-    return seed[index];
+    return randSeed[0];
   };
 
-  const showGeneratedNums = (nums) => {
+  const showGeneratedNums = nums => {
     const el = document.querySelector('._generated-nums');
     const markup = [];
     markup.push('<ol>');
     for (let num of nums) {
       markup.push('<li>');
       num = num.sort((a, b) => {
-        if (a < b) {
-          return -1;
-        } else if (a > b) {
-          return 1;
-        } else {
-          return 0;
-        }
+        return a - b;
       });
       for (let each of num) {
-        let color = 'yellow';
-
-        if (each >= 11 && each <= 20) {
-          color = 'blue';
-        } else if (each >= 21 && each <= 30) {
-          color = 'red';
-        } else if (each >= 31 && each <= 40) {
-          color = 'black';
-        } else if (each >= 41 && each <= 45) {
-          color = 'green';
-        }
-
-        markup.push(`<span class="ball ball-color-${color}">${each}</span>`)
+        const color = ((each - 1) / 10) | 0;
+        markup.push(`<span class="ball ball-color-${color}">${each}</span>`);
       }
       markup.push('</li>');
     }
@@ -226,7 +274,7 @@ import historys from './lottery-history.json';
     }
 
     return array;
-  }
+  };
 
   Array.prototype.contains = function(item) {
     if (!item) {

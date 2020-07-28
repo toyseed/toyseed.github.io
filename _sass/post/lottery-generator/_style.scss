@@ -1,10 +1,12 @@
 .lottery-generator {
+  font-family: sans-serif;
+
   .lottery-generator__options {
     display: flex;
     flex-direction: column;
   }
 
-  .generation-results {
+  //.generation-results {
     .ball {
       display: inline-block;
       width: 2em;
@@ -14,39 +16,46 @@
       text-align: center;
     }
 
+    .mini {
+      width: 1.8em;
+      height: 1.8em;
+      font-size: 0.8em;
+      line-height: 1.2;
+    }
+
     @mixin color-border($color) {
       border: $color solid 4px;
       box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4);
     }
 
-    .ball-color-yellow{
+    .ball-color-0{
       @include color-border(yellow);
     }
-    .ball-color-blue{
+    .ball-color-1{
       @include color-border(blue);
     }
-    .ball-color-black{
+    .ball-color-2{
       @include color-border(black);
     }
-    .ball-color-red {
+    .ball-color-3{
       @include color-border(red);
     }
-    .ball-color-green {
+    .ball-color-4{
       @include color-border(green);
     }
-  }
+  //}
   .nums-select-layer {
     display: none;
     flex-direction: column;
     align-items: center;
     position: absolute;
     width: 80%;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    transform: translateX(-50%);
     padding-bottom: 1em;
     background-color: #fff;
-    box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 0 1000vmax rgba(0, 0, 0, 0.4);
     z-index:100;
 
     ol {
@@ -70,5 +79,49 @@
       width: 100%;
       text-align: center;
     }
+  }
+  .lottery-history {
+    .select-history {
+      display: flex;
+      flex-direction: row;
+      border-bottom: #000 1px solid;
+      padding-left: 0.2em;
+
+      .button {
+        display: inline-block;
+        padding: 0.5em;
+        margin-bottom: -1px;
+        border: #000 1px solid;
+
+        &.selected {
+          border-bottom: #fff 1px solid;
+        }
+      }
+
+      .show-winning-static {
+        border-right: none;
+      }
+    }
+    .content ol {
+      margin-left: -1em;
+      list-style: none;
+    }
+
+    .bar {
+      position: relative;
+      display: inline-block;
+      text-align: center;
+      background-color: rebeccapurple;
+      line-height: 1;
+    }
+  }
+  .hide {
+    display: none;
+  }
+
+  .generation-history {
+    height: 4em;
+    margin-top: 4em;
+    text-align: center;
   }
 }
