@@ -7,7 +7,6 @@ import historys from './lottery-history.json';
     const storage = window.localStorage;
     const storeKey = 'localHistory';
     const localHistory = JSON.parse(storage.getItem(storeKey) || '[]');
-    console.log('local history: ', localHistory);
 
     const baseEl = document.querySelector('.lottery-generator');
     let gameCountEl = baseEl.querySelector('._game-count-value');
@@ -129,7 +128,6 @@ import historys from './lottery-history.json';
     byColorMarkup.push('</ol>');
     byColorArea.innerHTML = byColorMarkup.join('');
 
-    console.log(byColor, maxColorCount);
     const byNumArea = baseEl.querySelector('._num-history');
     const byNumMarkup = [];
     byNumMarkup.push('<ol>');
