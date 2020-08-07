@@ -1,7 +1,9 @@
 import historys from './lottery-history.json';
 
 (_ => {
-  const winningHistory = historys.map(history => history.nums.slice(0, 6));
+  const winningHistory = historys
+    .map(history => history.nums.slice(0, 6))
+    .reverse();
 
   _.addEventListener('load', _ => {
     const storage = window.localStorage;
@@ -20,7 +22,6 @@ import historys from './lottery-history.json';
     // make nums excluded select area
     makeNumsExcludedLayer(baseEl);
     // TODO: show local history
-    // TODO: show stat
     showStat(baseEl);
 
     document
@@ -49,7 +50,11 @@ import historys from './lottery-history.json';
         );
         showGeneratedNums(nums);
         localHistory.push({ time: new Date().getTime(), nums: nums });
+        while (localHistory.length > 300) {
+          localHistory.shift();
+        }
         storage.setItem(storeKey, JSON.stringify(localHistory));
+        showGenerationHistory(baseEl, localHistory);
       } else if (hasClass(el, '_cancel-included')) {
         // hide
         baseEl.querySelector('._nums-included-layer').style.display = 'none';
@@ -89,9 +94,48 @@ import historys from './lottery-history.json';
           .classList.remove('selected');
         baseEl.querySelector('._winning-static').classList.add('hide');
         baseEl.querySelector('._generation-history').classList.remove('hide');
+
+        showGenerationHistory(baseEl, localHistory);
       }
     });
   });
+
+  const showGenerationHistory = (baseEl, localHistory) => {
+    let markup = [];
+    markup.push('<ol>');
+    for (let i = localHistory.length - 1; i >= 0; i--) {
+      let hist = localHistory[i];
+      let gDate = new Date(hist.time);
+      let gNums = hist.nums;
+
+      markup.push('<li>');
+      markup.push('<ol>');
+      markup.push(
+        `<span>${gDate.getFullYear()}-${gDate.getMonth() + 1}-${gDate.getDate()} ${gDate.getHours()}:${gDate.getMinutes()}:${gDate.getSeconds()}</span>`,
+      );
+      for (let nums of gNums) {
+        markup.push('<li>');
+        for (let num of nums) {
+          let color = ((num - 1) / 10) | 0;
+          markup.push(
+            `<span class="ball mini ball-color-${color}">${num}</span>`,
+          );
+        }
+        let winedGame = winningHistory.containsAt(nums);
+        if (winedGame > -1) {
+          markup.push(`<span>${winedGame + 1}회 당첨번호</span>`);
+        }
+        markup.push('</li>');
+      }
+      markup.push('</ol>');
+      markup.push('</li>');
+    }
+    markup.push('</ol>');
+
+    baseEl.querySelector(
+      '._generation-history .content',
+    ).innerHTML = markup.join('');
+  };
 
   const showStat = baseEl => {
     const byNum = [];
@@ -120,9 +164,9 @@ import historys from './lottery-history.json';
     const byColorMarkup = [];
     byColorMarkup.push('<ol>');
     byColor.forEach((count, color) => {
-      const width = ((count / maxColorCount) * 100) / 2;
+      const height = ((count / maxColorCount) * 100) / 2;
       byColorMarkup.push(
-        `<li><span class="ball mini ball-color-${color}">&nbsp;</span><span class="bar" style="width:${width}%">&nbsp;</span><span>${count}</span></span></li>`,
+        `<li><span class="ball mini ball-color-${color}">&nbsp;</span><span class="bar" style="height:${height}%">&nbsp;</span><span>${count}</span></span></li>`,
       );
     });
     byColorMarkup.push('</ol>');
@@ -133,11 +177,11 @@ import historys from './lottery-history.json';
     byNumMarkup.push('<ol>');
     byNum.forEach((count, num) => {
       const width = ((count / maxNumCount) * 100) / 2;
-      const color = (num - 1) / 10 | 0;
+      const color = ((num - 1) / 10) | 0;
       byNumMarkup.push(
         `<li><span class="ball mini ball-color-${color}">${num}</span><span class="bar" style="width:${width}%">&nbsp;</span><span>${count}</span></span></li>`,
       );
-    })
+    });
     byNumMarkup.push('</ol>');
     byNumArea.innerHTML = byNumMarkup.join('');
   };
@@ -197,7 +241,7 @@ import historys from './lottery-history.json';
   const randomLotteryNum = () => {
     const shuffle = Math.round(Math.random() * 8);
     for (let i = 0; i < shuffle; i++) {
-      randSeed = randSeed.suffled();
+      randSeed = randSeed.shuffled();
     }
 
     return randSeed[0];
@@ -260,7 +304,7 @@ import historys from './lottery-history.json';
 
   const showStatByNum = function(statByNum) {};
 
-  Array.prototype.suffled = function() {
+  Array.prototype.shuffled = function() {
     let array = this.slice();
     let temp;
 
@@ -274,6 +318,37 @@ import historys from './lottery-history.json';
     return array;
   };
 
+  Array.prototype.containsAt = function(item) {
+    if (!item) {
+      return -1;
+    }
+
+    if (item instanceof Array) {
+      let findAt = -1;
+      for (let i = 0; i < this.length; i++) {
+        let value = this[i];
+        if (!(value instanceof Array) || value.length !== item.length) {
+          continue;
+        }
+
+        let allSame = true;
+        for (let j = 0; j < item.length; j++) {
+          if (!value.includes(item[j])) {
+            allSame = false;
+            break;
+          }
+        }
+
+        if (allSame) {
+          findAt = i;
+          break;
+        }
+      }
+      return findAt;
+    } else {
+      return this.indexOf(item);
+    }
+  };
   Array.prototype.contains = function(item) {
     if (!item) {
       return false;

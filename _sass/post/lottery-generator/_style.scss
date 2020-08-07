@@ -7,42 +7,45 @@
   }
 
   //.generation-results {
-    .ball {
-      display: inline-block;
-      width: 2em;
-      height: 2em;
-      border-radius: 50%;
-      margin-right: 0.4em;
-      text-align: center;
-    }
+  .ball {
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    margin-right: 0.4em;
+    text-align: center;
+  }
 
-    .mini {
-      width: 1.8em;
-      height: 1.8em;
-      font-size: 0.8em;
-      line-height: 1.2;
-    }
+  .mini {
+    width: 1.8em;
+    height: 1.8em;
+    font-size: 0.8em;
+    line-height: 1.2;
+  }
 
-    @mixin color-border($color) {
-      border: $color solid 4px;
-      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4);
-    }
+  @mixin color-border($color) {
+    border: $color solid 4px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+    background-color: $color;
+    color: white;
+  }
 
-    .ball-color-0{
-      @include color-border(yellow);
-    }
-    .ball-color-1{
-      @include color-border(blue);
-    }
-    .ball-color-2{
-      @include color-border(black);
-    }
-    .ball-color-3{
-      @include color-border(red);
-    }
-    .ball-color-4{
-      @include color-border(green);
-    }
+  .ball-color-0 {
+    @include color-border(#f1f10e);
+    color:black;
+  }
+  .ball-color-1 {
+    @include color-border(blue);
+  }
+  .ball-color-2 {
+    @include color-border(black);
+  }
+  .ball-color-3 {
+    @include color-border(red);
+  }
+  .ball-color-4 {
+    @include color-border(green);
+  }
   //}
   .nums-select-layer {
     display: none;
@@ -56,7 +59,7 @@
     padding-bottom: 1em;
     background-color: #fff;
     box-shadow: 0 0 0 1000vmax rgba(0, 0, 0, 0.4);
-    z-index:100;
+    z-index: 100;
 
     ol {
       display: flex;
@@ -107,12 +110,42 @@
       list-style: none;
     }
 
-    .bar {
-      position: relative;
-      display: inline-block;
-      text-align: center;
-      background-color: rebeccapurple;
-      line-height: 1;
+    .color-history ol {
+      display: flex;
+      flex-direction: row;
+      height: 30vh;
+
+      li {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        margin-right: 0.3em;
+      }
+
+      li .ball {
+        margin: 0.2em 0;
+      }
+
+      li .bar {
+        border-radius: 3px;
+        background-color: rebeccapurple;
+      }
+    }
+
+    .num-history {
+      li {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+
+      li .bar {
+        display: inline-block;
+        border-radius: 3px;
+        background-color: rebeccapurple;
+        height: 6px;
+        margin-right: 0.5rem;
+      }
     }
   }
   .hide {
@@ -120,8 +153,6 @@
   }
 
   .generation-history {
-    height: 4em;
-    margin-top: 4em;
-    text-align: center;
+    margin-top: 1em;
   }
 }
