@@ -1,0 +1,41 @@
+/* footer */
+.footer {
+  position: relative;;
+  background-color: #ddd;
+}
+
+.footer-wrap {
+  //max-width: $content-max-width;
+  height: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 $base-gutter;
+  margin: 0 auto;
+
+  font-size: 0.8em;
+  color: $sub-font-color;
+
+  &::before {
+    content: " ";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    left: 0;
+    top: 0;
+    box-shadow: 0 1px 3px $sub-font-color;
+  }
+}
+
+.footer-contact {
+  text-align: end;
+  width: 5em;
+
+  a {
+    font-size: 1.2em;
+    color: $sub-font-color;
+    margin-left: 0.3rem;
+  }
+}

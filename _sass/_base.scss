@@ -1,0 +1,50 @@
+/* util */
+.clearfix {
+  &::before,
+  &::after {
+    content: '';
+    display: table;
+  }
+
+  &::after {
+    clear: both;
+  }
+}
+
+/* common */
+.wrapper {
+  font-family: 'Noto Serif KR', serif;
+  color: $base-font-color;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* base layout */
+html,
+body {
+  height: 100%;
+  min-height: 100%;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100%;
+}
+
+.header {
+  height: $header-height;
+}
+
+.content {
+  position: relative;
+  flex-grow: 1;
+}
+
+.footer {
+  height: $header-height;
+}

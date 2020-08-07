@@ -1,10 +1,16 @@
-<li class="post-list_item clearfix">
-  <h2 class="post-list_item_title"><a href="{{ post.url}}" class="post-list_item_link">{{ post.title }}</a></h2>
-  <p class="post-list_item_excerpt">{{ post.excerpt | strip_html }}</p>
-  <span class="post-list_item_date">{{ post.date | date: '%B %d, %Y' }}</span>
-  <ul class="post-list_item_tags">
-    {% for tag in post.tags %}
-    <li class="post-list_item_tag">{{ tag }}</li>
-    {% endfor %}
-  </ul>
+<li class="post-list_item">
+  <div class="item_head">
+    <h3 class="head_title">
+      <a href="{{ post.url}}" class="title_link">{{ post.title }}</a>
+    </h3>
+  </div>
+  <div class="item_content">
+    <p class="content_excerpt">{{ post.excerpt | strip_html }}</p>
+    <span class="content_date">{{ post.date | date: '%b %d, %Y' }}</span>
+    <ul class="content_tags">
+      {% for tag in post.tags %}
+      <li class="tags_tag">{{ tag }}</li>
+      {% endfor %}
+    </ul>
+  </div>
 </li>
