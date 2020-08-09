@@ -7,14 +7,6 @@ custom_css: [post/lottery-generator/style]
 ---
 
 <div class="lottery-generator">
-  <!--
-    어떤 옵션을 줄 수 있을까?
-    - 생성할 번호 개수
-    - 1등 당첨번호와 중복 허용
-    - 필수 번호 지정?
-    - 뺄번호
-    로또 번호는 1~45
-    -->
   <div class="lottery-generator__options">
     <span class="options__item">
       <label for="game-count-range">총 게임 수</label>
@@ -48,15 +40,19 @@ custom_css: [post/lottery-generator/style]
       <button class="_generate">번호 만들기</button>
     </span>
   </div>
-  <hr>
+  <hr />
   <h3>생성된 번호</h3>
   <div class="_generated-nums generation-results"></div>
   <hr>
 
   <div class="lottery-history">
     <div class="select-history">
-      <a class="_show-winning-static show-winning-static button selected">당첨번호통계</a>
-      <a class="_show-generation-history show-generation-history button hide">생성이력</a>
+      <a class="_show-winning-static show-winning-static button selected"
+        >당첨번호통계</a
+      >
+      <a class="_show-generation-history show-generation-history button hide"
+        >생성이력</a
+      >
     </div>
     <div class="_winning-static winning-static">
       <div class="desc"></div>
@@ -68,8 +64,10 @@ custom_css: [post/lottery-generator/style]
       </div>
     </div>
     <div class="_generation-history generation-history hide">
-      <div class="desc">지난 생성 이력과 역대 당첨 번호와 일치여부를 보여줍니다.</div>
-      <hr>
+      <div class="desc">
+        지난 생성 이력과 역대 당첨 번호와 일치여부를 보여줍니다.
+      </div>
+      <hr />
       <div class="content"></div>
     </div>
   </div>

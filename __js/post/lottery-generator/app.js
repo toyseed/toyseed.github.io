@@ -109,10 +109,10 @@ import historys from './lottery-history.json';
       let gNums = hist.nums;
 
       markup.push('<li>');
-      markup.push('<ol>');
       markup.push(
         `<span>${gDate.getFullYear()}-${gDate.getMonth() + 1}-${gDate.getDate()} ${gDate.getHours()}:${gDate.getMinutes()}:${gDate.getSeconds()}</span>`,
       );
+      markup.push('<ol>');
       for (let nums of gNums) {
         markup.push('<li>');
         for (let num of nums) {
@@ -186,7 +186,7 @@ import historys from './lottery-history.json';
     byNumArea.innerHTML = byNumMarkup.join('');
   };
 
-  const generateNums = (count, includes, excludes, exceptHistory) => {
+  const generateNums = (count, includes = [], excludes = [], exceptHistory = false) => {
     const result = [];
     const base = includes.filter(include => excludes.indexOf(include) === -1);
 
@@ -208,7 +208,9 @@ import historys from './lottery-history.json';
       return result;
     }
 
-    while (result.length < count) {
+    let maxTry = 1000;
+    while (result.length < count && maxTry > 0) {
+      maxTry--;
       let seed = base.slice();
       while (seed.length < 6) {
         let num = randomLotteryNum();
