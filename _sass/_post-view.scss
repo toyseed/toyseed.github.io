@@ -38,6 +38,9 @@
     height: 1px;
   }
 
+  word-break: keep-all;
+  text-align: justify;
+
   &::after, &::before {
     content: " ";
     display: block;

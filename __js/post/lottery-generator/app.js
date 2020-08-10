@@ -246,7 +246,7 @@ import historys from './lottery-history.json';
       randSeed = randSeed.shuffled();
     }
 
-    return randSeed[0];
+    return randSeed[randSeed.length / 2 | 0];
   };
 
   const showGeneratedNums = nums => {

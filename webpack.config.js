@@ -12,6 +12,7 @@ module.exports = {
     "tile-break": path.join(__dirname, "__js/post/tile-break", "tile-break.js"),
     "color-tester": path.join(__dirname, "__js/post/color-tester", "color-tester-rx.js"),
     "lottery-generator": path.join(__dirname, "__js/post/lottery-generator", "app.js"),
+    "text-animation": path.join(__dirname, "__js/post/text-animation", "text-animation.js"),
     "about": path.join(__dirname, "__js", "about.js"),
   },
   output: {
@@ -19,25 +20,6 @@ module.exports = {
     path: path.resolve(__dirname, "assets/js"),
     publicPath: '/assets/js/',
   },
-  // mode: "development",
-  // module: {
-  //   rules: [
-  //     {
-  //       test: /.js$/,
-  //       exclude: [
-  //           path.resolve(__dirname, "node_modules"),
-  //       ],
-  //       loader: "babel-loader",
-  //     },
-  //   ],
-  // },
-  // resolve: {
-  //   extensions: [".json", ".js", ".jsx"],
-  // },
-  // devServer: {
-  //   contentBase: path.join(__dirname, '_site'),
-  //   port: 9000
-  // },
   plugins: [
     new BrowserSyncPlugin({
       host: 'localhost',  //localhost로 사용
