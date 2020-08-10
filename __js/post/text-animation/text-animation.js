@@ -115,9 +115,12 @@
   };
 
   const getParticles = ctx => {
-    const texts = ['😀', '🤪', '😱', '👻'];
-    // const texts = ['Hi~!'];
-    const text = texts[Math.random() * texts.length | 0];
+    // const texts = ['😀', '🤪', '😱', '👻'];
+    // // const texts = ['Hi~!'];
+    // const text = texts[Math.random() * texts.length | 0];
+    const randA = (Math.random() * 5 | 0) * 10;
+    const randB = Math.random() * 16 | 0;
+    const text = String.fromCodePoint(parseInt('1F600', 16) + randA + randB);
 
     ctx.font = '50px bold Noto Serif KR';
     ctx.fillText(text, 5, 45);
