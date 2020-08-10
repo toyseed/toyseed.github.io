@@ -84,16 +84,18 @@
   };
 
   const draw = (ctx, particles) => {
+    // ctx.beginPath();
     for (let particle of particles) {
       ctx.beginPath();
-      ctx.moveTo(particle.x, particle.y);
+      // ctx.moveTo(particle.x, particle.y);
       ctx.arc(particle.x, particle.y, particle.radius, 0, 2 * Math.PI);
       ctx.fillStyle = particle.color;
       ctx.fill();
-      ctx.closePath();
+      // ctx.closePath();
     }
 
 
+    ctx.beginPath();
     for (let i = 0; i < particles.length - 1; i++) {
       let a = particles[i];
 
@@ -111,12 +113,13 @@
         }
       }
     }
+    // ctx.closePath();
     ctx.stroke();
   };
 
   const getParticles = ctx => {
-    // const texts = ['😀', '🤪', '😱', '👻'];
     // // const texts = ['Hi~!'];
+    // const texts = ['😀', '🤪', '😱', '👻', '😈', '🎃', '🐝'];
     // const text = texts[Math.random() * texts.length | 0];
     const randA = (Math.random() * 5 | 0) * 10;
     const randB = Math.random() * 16 | 0;
@@ -134,7 +137,7 @@
     for (let y = 0; y < rect.height; y++) {
       for (let x = 0; x < rect.width; x++) {
         let index = y * (4 * rect.width) + (4 * x + 3);
-        if (data[index] > 127) {
+        if (data[index] > 50) {
           let particle = new Particle((x + 20) * 10, y * 10);
           particle.color = `rgba(${data[index - 3]}, ${data[index - 2]}, ${data[index - 1]}, 1)`;
           particle.strokeColor= `rgba(${data[index - 3]}, ${data[index - 2]}, ${data[index - 1]}, 0.1)`;
