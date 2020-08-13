@@ -3,6 +3,7 @@
 
 const path = require("path");
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   mode: "production",
@@ -11,7 +12,7 @@ module.exports = {
     "game-of-life": path.join(__dirname, "__js/post/game-of-life", "game-of-life.js"),
     "tile-break": path.join(__dirname, "__js/post/tile-break", "tile-break.js"),
     "color-tester": path.join(__dirname, "__js/post/color-tester", "color-tester-rx.js"),
-    "lottery-generator": path.join(__dirname, "__js/post/lottery-generator", "app.js"),
+    "lottery-generator": path.join(__dirname, "__js/post/lottery-generator", "lottery-generator.js"),
     "text-animation": path.join(__dirname, "__js/post/text-animation", "text-animation.js"),
     "about": path.join(__dirname, "__js", "about.js"),
   },
@@ -21,6 +22,7 @@ module.exports = {
     publicPath: '/assets/js/',
   },
   plugins: [
+    // new BundleAnalyzerPlugin(),
     new BrowserSyncPlugin({
       host: 'localhost',  //localhost로 사용
       port: 3000,			//포트 3000을 사용  (이미 사용중이면 1씩 증가된 포트로 사용)
