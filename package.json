@@ -40,6 +40,6 @@
     "@nastyox/rando.js": "^2.0.2",
     "jquery": "^3.5.1",
     "rxjs": "^6.6.0",
-    "wasm-game-of-life": "file:../__external/wasm-game-of-life"
+    "wasm-game-of-life": "github:toyseed/wasm-game-of-life-pkg#master"
   }
 }
