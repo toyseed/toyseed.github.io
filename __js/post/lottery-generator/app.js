@@ -1,4 +1,5 @@
 import historys from './lottery-history.json';
+import { rando } from '@nastyox/rando.js';
 
 (_ => {
   const winningHistory = historys
@@ -21,7 +22,7 @@ import historys from './lottery-history.json';
     makeNumsIncludedLayer(baseEl);
     // make nums excluded select area
     makeNumsExcludedLayer(baseEl);
-    // TODO: show local history
+    // show local history
     showStat(baseEl);
 
     document
@@ -49,6 +50,7 @@ import historys from './lottery-history.json';
           excludeWinningNums,
         );
         showGeneratedNums(nums);
+        showGeneratedNumsStat(nums);
         localHistory.push({ time: new Date().getTime(), nums: nums });
         while (localHistory.length > 300) {
           localHistory.shift();
@@ -110,7 +112,8 @@ import historys from './lottery-history.json';
 
       markup.push('<li>');
       markup.push(
-        `<span>${gDate.getFullYear()}-${gDate.getMonth() + 1}-${gDate.getDate()} ${gDate.getHours()}:${gDate.getMinutes()}:${gDate.getSeconds()}</span>`,
+        `<span>${gDate.getFullYear()}-${gDate.getMonth() +
+          1}-${gDate.getDate()} ${gDate.getHours()}:${gDate.getMinutes()}:${gDate.getSeconds()}</span>`,
       );
       markup.push('<ol>');
       for (let nums of gNums) {
@@ -186,7 +189,12 @@ import historys from './lottery-history.json';
     byNumArea.innerHTML = byNumMarkup.join('');
   };
 
-  const generateNums = (count, includes = [], excludes = [], exceptHistory = false) => {
+  const generateNums = (
+    count,
+    includes = [],
+    excludes = [],
+    exceptHistory = false,
+  ) => {
     const result = [];
     const base = includes.filter(include => excludes.indexOf(include) === -1);
 
@@ -241,12 +249,16 @@ import historys from './lottery-history.json';
   }
 
   const randomLotteryNum = () => {
-    const shuffle = Math.round(Math.random() * 8);
-    for (let i = 0; i < shuffle; i++) {
-      randSeed = randSeed.shuffled();
-    }
+    if (Math.round(Math.random()) === 0) {
+      const shuffle = Math.round(Math.random() * 8);
+      for (let i = 0; i < shuffle; i++) {
+        randSeed = randSeed.shuffled();
+      }
 
-    return randSeed[randSeed.length / 2 | 0];
+      return randSeed[(randSeed.length / 2) | 0];
+    } else {
+      return rando(1, 45);
+    }
   };
 
   const showGeneratedNums = nums => {
@@ -267,6 +279,42 @@ import historys from './lottery-history.json';
     markup.push('</ol>');
     el.innerHTML = markup.join('');
   };
+
+  const showGeneratedNumsStat = nums => {
+    const el = document.querySelector('._generated-nums');
+    const numStat = new Array(45);
+    numStat.fill(0, 0 ,45);
+
+    for (let num of nums) {
+      for (let each of num) {
+        numStat[each - 1] += 1;
+      }
+    }
+
+    const colorStat = new Array(5);
+    colorStat.fill(0, 0);
+
+    for (const [i, v] of numStat.entries()) {
+      colorStat[(i / 10) | 0] += v;
+    }
+
+    const colorStatMarkup = [];
+    colorStatMarkup.push('<ol>');
+    for (const [i, v] of colorStat.entries()) {
+      colorStatMarkup.push(`<li><span class="ball mini ball-color-${i}"></span><span>${v}</span></li>`)
+    }
+    colorStatMarkup.push('</ol>')
+    document.querySelector('._stat-color').innerHTML = colorStatMarkup.join('');
+
+    const numStatMarkup = [];
+    numStatMarkup.push('<ol>');
+    for (const [i, v] of numStat.entries()) {
+      let color = (i / 10) | 0;
+      numStatMarkup.push(`<li class="${v === 0 ? 'no-value' : ''}"><span class="ball mini ball-color-${color}">${i + 1}</span><span>${v}</span></li>`);
+    }
+    numStatMarkup.push('</ol>');
+    document.querySelector('._stat-num').innerHTML = numStatMarkup.join('');
+  }
 
   const makeNumsIncludedLayer = baseEl => {
     const layerMarkup = makeNumsLayer('included');
@@ -297,14 +345,6 @@ import historys from './lottery-history.json';
   const hasClass = (el, className) => {
     return el.classList.contains(className);
   };
-
-  const generateStatByNum = function() {
-    for (let index of historys) {
-      console.log(index);
-    }
-  };
-
-  const showStatByNum = function(statByNum) {};
 
   Array.prototype.shuffled = function() {
     let array = this.slice();

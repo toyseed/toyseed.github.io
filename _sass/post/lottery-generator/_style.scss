@@ -6,7 +6,6 @@
     flex-direction: column;
   }
 
-  //.generation-results {
   .ball {
     display: inline-block;
     width: 2em;
@@ -31,22 +30,26 @@
   }
 
   .ball-color-0 {
-    @include color-border(#f1f10e);
-    color:black;
+    // yellow
+    @include color-border(#EED183);
   }
   .ball-color-1 {
-    @include color-border(blue);
+    // blue
+    @include color-border(#78A5E3);
   }
   .ball-color-2 {
-    @include color-border(black);
+    // black
+    @include color-border(#5B5E62);
   }
   .ball-color-3 {
-    @include color-border(red);
+    //red
+    @include color-border(#EE7E6C);
   }
   .ball-color-4 {
-    @include color-border(green);
+    // green
+    @include color-border(#A8DF90);
   }
-  //}
+
   .nums-select-layer {
     display: none;
     flex-direction: column;
@@ -83,6 +86,45 @@
       text-align: center;
     }
   }
+
+  .generated {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    align-items: start;
+
+    & > div {
+      flex-grow: 1;
+      min-width: 300px;
+      width: 50%;
+    }
+
+    .generated__stat{
+      .stat__num {
+        max-width: 340px;
+      }
+      ol {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0;
+      }
+
+      li {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-left: 1rem;
+
+        &.no-value {
+          opacity: 0.1;
+        }
+      }
+    }
+  }
+
   .lottery-history {
     .select-history {
       display: flex;
@@ -137,6 +179,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
+
       }
 
       li .bar {
@@ -154,5 +197,16 @@
 
   .generation-history {
     margin-top: 1em;
+
+    & .content > ol {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+
+      & ol {
+        min-width: 230px;
+      }
+    }
   }
 }
