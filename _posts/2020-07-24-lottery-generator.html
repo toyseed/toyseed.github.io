@@ -1,5 +1,5 @@
 ---
-title: 로또 번호 생성기 v0.8
+title: 로또 번호 생성기 v0.9
 tags: [game]
 excerpt_separator: ''
 custom_js: [lottery-generator-bundle]
@@ -23,18 +23,18 @@ custom_css: [post/lottery-generator/style]
       <span class="_game-count-value">10</span>
     </span>
     <span class="options__item">
-      <span>포함할 번호</span>
+      <span>포함할 숫자</span>
       <span class="_nums-included"></span>
       <button class="_show-nums-included">선택</button>
     </span>
     <span class="options__item">
-      <span>제외할 번호</span>
+      <span>제외할 숫자</span>
       <span class="_nums-excluded"></span>
       <button class="_show-nums-excluded">선택</button>
     </span>
     <span class="options__item">
       <input type="checkbox" class="_exclude-history" id="exclude-history" />
-      <label for="exclude-history">당첨된 적이 있는 번호 제외</label>
+      <label for="exclude-history">1등에 당첨된 적이 있는 번호 제외</label>
     </span>
     <span class="options__item">
       <button class="_generate">번호 만들기</button>
@@ -80,7 +80,7 @@ custom_css: [post/lottery-generator/style]
     </div>
     <div class="_generation-history generation-history hide">
       <div class="desc">
-        지난 생성 이력과 역대 당첨 번호와 일치여부를 보여줍니다.
+        지난 생성 이력(최대 100회)과 가장 최근에 당첨된 높은 등수를 보여줍니다.(회차/등수/총 당첨 횟수)
       </div>
       <hr />
       <div class="content"></div>

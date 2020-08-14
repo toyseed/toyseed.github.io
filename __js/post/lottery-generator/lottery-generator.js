@@ -2,9 +2,70 @@ import historys from './lottery-history.json';
 import { rando } from '@nastyox/rando.js';
 
 (_ => {
-  const winningHistory = historys
-    .map(history => history.nums.slice(0, 6))
-    .reverse();
+  // const winningHistory = historys
+  //   .map(history => history.nums.slice(0, 6))
+  //   .reverse();
+
+  // const winningNumbers = historys.map(history => {
+  //   return {
+  //     numbers: history.nums.slice(0, 6),
+  //     bonusNumber: history.nums[6]
+  //   };
+  // }).reverse();
+  //
+  const lotteryHistory = {
+    winningNumbers: historys
+      .map(history => {
+        return {
+          numbers: history.nums.slice(0, 6),
+          bonusNumber: history.nums[6],
+        };
+      })
+      .reverse(),
+    hasWonFirst: function(nums) {
+      for (let winningNumber of this.winningNumbers) {
+        if (winningNumber.contains(nums)) {
+          return true;
+        }
+      }
+      return false;
+    },
+    findBestMatch: function(nums) {
+      let match = { match: false, game: -1, grade: 999, count: 0};
+
+      for (let [index, winningNumber] of this.winningNumbers.entries()) {
+        let count = winningNumber.numbers.matchCount(nums);
+        if (count < 3) {
+          continue;
+        } else {
+          match.match = true;
+          match.count += 1;
+        }
+
+        let grade = -1;
+        if (count === 6) {
+          grade = 1;
+        } else if (count === 5) {
+          if (nums.indexOf(winningNumber.bonusNumber) > -1) {
+            grade = 2;
+          } else {
+            grade = 3;
+          }
+        } else if (count === 4) {
+          grade = 4;
+        } else {
+          grade = 5;
+        }
+
+        if (match.grade >= grade) {
+          match.game = index + 1;
+          match.grade = grade;
+        }
+      }
+
+      return match;
+    },
+  };
 
   _.addEventListener('load', _ => {
     const storage = window.localStorage;
@@ -52,7 +113,7 @@ import { rando } from '@nastyox/rando.js';
         showGeneratedNums(nums);
         showGeneratedNumsStat(nums);
         localHistory.push({ time: new Date().getTime(), nums: nums });
-        while (localHistory.length > 300) {
+        while (localHistory.length > 100) {
           localHistory.shift();
         }
         storage.setItem(storeKey, JSON.stringify(localHistory));
@@ -124,9 +185,9 @@ import { rando } from '@nastyox/rando.js';
             `<span class="ball mini ball-color-${color}">${num}</span>`,
           );
         }
-        let winedGame = winningHistory.containsAt(nums);
-        if (winedGame > -1) {
-          markup.push(`<span>${winedGame + 1}회 당첨번호</span>`);
+        let winedGame = lotteryHistory.findBestMatch(nums);
+        if (winedGame.match) {
+          markup.push(`<span>${winedGame.game} / ${winedGame.grade} / ${winedGame.count}</span>`);
         }
         markup.push('</li>');
       }
@@ -147,7 +208,7 @@ import { rando } from '@nastyox/rando.js';
     let maxNumCount = -1;
     let maxColorCount = -1;
 
-    for (let history of winningHistory) {
+    for (let { nums: history } of historys) {
       for (let num of history) {
         byNum[num] = (byNum[num] || 0) + 1;
         const color = ((num - 1) / 10) | 0;
@@ -202,7 +263,7 @@ import { rando } from '@nastyox/rando.js';
       for (let i = 0; i <= base.length - 6; i++) {
         let candidate = base.slice(i, i + 6);
 
-        if (exceptHistory && !winningHistory.contains(candidate)) {
+        if (exceptHistory && !lotteryHistory.hasWonFirst(candidate)) {
           result.push(base.slice(i, i + 6));
         }
 
@@ -229,7 +290,7 @@ import { rando } from '@nastyox/rando.js';
 
         seed.push(num);
       }
-      if (exceptHistory && winningHistory.contains(seed)) {
+      if (exceptHistory && lotteryHistory.hasWonFirst(seed)) {
         console.log(`${seed} exists in the history`);
         continue;
       }
@@ -283,7 +344,7 @@ import { rando } from '@nastyox/rando.js';
   const showGeneratedNumsStat = nums => {
     const el = document.querySelector('._generated-nums');
     const numStat = new Array(45);
-    numStat.fill(0, 0 ,45);
+    numStat.fill(0, 0, 45);
 
     for (let num of nums) {
       for (let each of num) {
@@ -301,20 +362,27 @@ import { rando } from '@nastyox/rando.js';
     const colorStatMarkup = [];
     colorStatMarkup.push('<ol>');
     for (const [i, v] of colorStat.entries()) {
-      colorStatMarkup.push(`<li><span class="ball mini ball-color-${i}"></span><span>${v}</span></li>`)
+      colorStatMarkup.push(
+        `<li><span class="ball mini ball-color-${i}"></span><span>${v}</span></li>`,
+      );
     }
-    colorStatMarkup.push('</ol>')
+    colorStatMarkup.push('</ol>');
     document.querySelector('._stat-color').innerHTML = colorStatMarkup.join('');
 
     const numStatMarkup = [];
     numStatMarkup.push('<ol>');
     for (const [i, v] of numStat.entries()) {
       let color = (i / 10) | 0;
-      numStatMarkup.push(`<li class="${v === 0 ? 'no-value' : ''}"><span class="ball mini ball-color-${color}">${i + 1}</span><span>${v}</span></li>`);
+      numStatMarkup.push(
+        `<li class="${
+          v === 0 ? 'no-value' : ''
+        }"><span class="ball mini ball-color-${color}">${i +
+          1}</span><span>${v}</span></li>`,
+      );
     }
     numStatMarkup.push('</ol>');
     document.querySelector('._stat-num').innerHTML = numStatMarkup.join('');
-  }
+  };
 
   const makeNumsIncludedLayer = baseEl => {
     const layerMarkup = makeNumsLayer('included');
@@ -360,6 +428,21 @@ import { rando } from '@nastyox/rando.js';
     return array;
   };
 
+  Array.prototype.matchCount = function(item) {
+    if (!item || !(item instanceof Array)) {
+      return 0;
+    }
+
+    let matchCount = 0;
+    for (let thisNum of this) {
+      if (item.indexOf(thisNum) > -1) {
+        matchCount++;
+      }
+    }
+
+    return matchCount;
+  };
+
   Array.prototype.containsAt = function(item) {
     if (!item) {
       return -1;
@@ -391,6 +474,7 @@ import { rando } from '@nastyox/rando.js';
       return this.indexOf(item);
     }
   };
+
   Array.prototype.contains = function(item) {
     if (!item) {
       return false;
@@ -422,4 +506,10 @@ import { rando } from '@nastyox/rando.js';
       return this.includes(item);
     }
   };
+
+  // console.log(lotteryHistory.findBestMatch([3, 5, 12, 13, 33, 39]));
+  // console.log(lotteryHistory.findBestMatch([3, 5, 12, 13, 33, 38]));
+  // console.log(lotteryHistory.findBestMatch([3, 5, 12, 13, 33]));
+  // console.log(lotteryHistory.findBestMatch([12, 13, 33, 39]));
+  // console.log(lotteryHistory.findBestMatch([3, 5, 12]));
 })(window);
