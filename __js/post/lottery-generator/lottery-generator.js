@@ -24,7 +24,7 @@ import { rando } from '@nastyox/rando.js';
       .reverse(),
     hasWonFirst: function(nums) {
       for (let winningNumber of this.winningNumbers) {
-        if (winningNumber.contains(nums)) {
+        if (winningNumber.numbers.contains(nums)) {
           return true;
         }
       }
