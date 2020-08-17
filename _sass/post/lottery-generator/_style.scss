@@ -50,6 +50,15 @@
     @include color-border(#A8DF90);
   }
 
+  .options__item {
+    &.rules {
+      display: flex;
+      flex-direction: column;
+
+      margin-left: 0.5rem;
+    }
+  }
+
   .nums-select-layer {
     display: none;
     flex-direction: column;

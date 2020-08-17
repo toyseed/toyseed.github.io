@@ -36,6 +36,40 @@ custom_css: [post/lottery-generator/style]
       <input type="checkbox" class="_exclude-history" id="exclude-history" />
       <label for="exclude-history">1등에 당첨된 적이 있는 번호 제외</label>
     </span>
+    <span>번호 생성 방식</span>
+    <span class="options__item rules">
+      <span>
+        <input
+          type="radio"
+          class="gen-rule"
+          name="gen-rule"
+          id="random"
+          value="random"
+          checked
+        />
+        <label for="random">랜덤</label>
+      </span>
+      <span>
+        <input
+          type="radio"
+          class="gen-rule"
+          name="gen-rule"
+          id="priority-many"
+          value="many"
+        />
+        <label for="priority-many">많이 나온 수 우선 랜덤</label>
+      </span>
+      <span>
+        <input
+          type="radio"
+          class="gen-rule"
+          name="gen-rule"
+          id="priority-less"
+          value="less"
+        />
+        <label for="priority-less">적게 나온 수 우선 랜덤</label>
+      </span>
+    </span>
     <span class="options__item">
       <button class="_generate">번호 만들기</button>
     </span>
@@ -49,13 +83,9 @@ custom_css: [post/lottery-generator/style]
     <div class="generated__stat">
       <h3>생성된 번호 분포</h3>
       <h5>색상 분포</h5>
-      <div class="_stat-color stat__color">
-
-      </div>
+      <div class="_stat-color stat__color"></div>
       <h5>숫자 분포</h5>
-      <div class="_stat-num stat__num">
-
-      </div>
+      <div class="_stat-num stat__num"></div>
     </div>
   </div>
   <hr />
@@ -80,7 +110,8 @@ custom_css: [post/lottery-generator/style]
     </div>
     <div class="_generation-history generation-history hide">
       <div class="desc">
-        지난 생성 이력(최대 100회)과 가장 최근에 당첨된 높은 등수를 보여줍니다.(회차/등수/총 당첨 횟수)
+        지난 생성 이력(최대 100회)과 가장 최근에 당첨된 높은 등수를
+        보여줍니다.(회차/등수/총 당첨 횟수)
       </div>
       <hr />
       <div class="content"></div>

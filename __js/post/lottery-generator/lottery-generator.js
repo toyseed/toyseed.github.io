@@ -2,17 +2,6 @@ import historys from './lottery-history.json';
 import { rando } from '@nastyox/rando.js';
 
 (_ => {
-  // const winningHistory = historys
-  //   .map(history => history.nums.slice(0, 6))
-  //   .reverse();
-
-  // const winningNumbers = historys.map(history => {
-  //   return {
-  //     numbers: history.nums.slice(0, 6),
-  //     bonusNumber: history.nums[6]
-  //   };
-  // }).reverse();
-  //
   const lotteryHistory = {
     winningNumbers: historys
       .map(history => {
@@ -31,7 +20,7 @@ import { rando } from '@nastyox/rando.js';
       return false;
     },
     findBestMatch: function(nums) {
-      let match = { match: false, game: -1, grade: 999, count: 0};
+      let match = { match: false, game: -1, grade: 999, count: 0 };
 
       for (let [index, winningNumber] of this.winningNumbers.entries()) {
         let count = winningNumber.numbers.matchCount(nums);
@@ -66,6 +55,42 @@ import { rando } from '@nastyox/rando.js';
       return match;
     },
   };
+
+  const ballTotal = historys.length * 7;
+  const byNum = [];
+  const byColor = [];
+
+  let maxNumCount = -1;
+  let maxColorCount = -1;
+
+  for (let { nums: history } of historys) {
+    for (let num of history) {
+      byNum[num] = (byNum[num] || 0) + 1;
+      const color = ((num - 1) / 10) | 0;
+      byColor[color] = (byColor[color] || 0) + 1;
+
+      if (byNum[num] > maxNumCount) {
+        maxNumCount = byNum[num];
+      }
+
+      if (byColor[color] > maxColorCount) {
+        maxColorCount = byColor[color];
+      }
+    }
+  }
+
+  const byNumRev = [];
+  const revBase = maxNumCount + 100;
+  let ballTotalRev = 0;
+
+  for (let [index, num] of byNum.entries()) {
+    if (num === undefined) {
+      continue;
+    }
+
+    byNumRev[index] = revBase - num;
+    ballTotalRev += byNumRev[index];
+  }
 
   _.addEventListener('load', _ => {
     const storage = window.localStorage;
@@ -104,11 +129,16 @@ import { rando } from '@nastyox/rando.js';
         excludeWinningNums = el.checked;
       } else if (hasClass(el, '_generate')) {
         // generate lottery nums
+        const genRule = Array.prototype.slice
+          .call(baseEl.getElementsByClassName('gen-rule'))
+          .filter(el => el.checked)[0].value;
+
         const nums = generateNums(
           gameCount,
           numsIncluded,
           numsExcluded,
           excludeWinningNums,
+          genRule,
         );
         showGeneratedNums(nums);
         showGeneratedNumsStat(nums);
@@ -187,7 +217,9 @@ import { rando } from '@nastyox/rando.js';
         }
         let winedGame = lotteryHistory.findBestMatch(nums);
         if (winedGame.match) {
-          markup.push(`<span>${winedGame.game} / ${winedGame.grade} / ${winedGame.count}</span>`);
+          markup.push(
+            `<span>${winedGame.game} / ${winedGame.grade} / ${winedGame.count}</span>`,
+          );
         }
         markup.push('</li>');
       }
@@ -202,28 +234,6 @@ import { rando } from '@nastyox/rando.js';
   };
 
   const showStat = baseEl => {
-    const byNum = [];
-    const byColor = [];
-
-    let maxNumCount = -1;
-    let maxColorCount = -1;
-
-    for (let { nums: history } of historys) {
-      for (let num of history) {
-        byNum[num] = (byNum[num] || 0) + 1;
-        const color = ((num - 1) / 10) | 0;
-        byColor[color] = (byColor[color] || 0) + 1;
-
-        if (byNum[num] > maxNumCount) {
-          maxNumCount = byNum[num];
-        }
-
-        if (byColor[color] > maxColorCount) {
-          maxColorCount = byColor[color];
-        }
-      }
-    }
-
     const byColorArea = baseEl.querySelector('._color-history');
     const byColorMarkup = [];
     byColorMarkup.push('<ol>');
@@ -255,6 +265,7 @@ import { rando } from '@nastyox/rando.js';
     includes = [],
     excludes = [],
     exceptHistory = false,
+    genRule = 'random',
   ) => {
     const result = [];
     const base = includes.filter(include => excludes.indexOf(include) === -1);
@@ -282,7 +293,7 @@ import { rando } from '@nastyox/rando.js';
       maxTry--;
       let seed = base.slice();
       while (seed.length < 6) {
-        let num = randomLotteryNum();
+        let num = randomLotteryNum(genRule);
 
         if (seed.contains(num) || excludes.contains(num)) {
           continue;
@@ -309,16 +320,48 @@ import { rando } from '@nastyox/rando.js';
     randSeed.push(i);
   }
 
-  const randomLotteryNum = () => {
-    if (Math.round(Math.random()) === 0) {
-      const shuffle = Math.round(Math.random() * 8);
-      for (let i = 0; i < shuffle; i++) {
-        randSeed = randSeed.shuffled();
-      }
+  const randomLotteryNum = genRule => {
+    if (genRule === 'less') {
+      const random = rando(1, ballTotalRev);
+      let numAcc = 0;
 
-      return randSeed[(randSeed.length / 2) | 0];
+      for (let [index, numCount] of byNumRev.entries()) {
+        if (numCount === undefined) {
+          continue;
+        }
+
+        numAcc = numAcc + numCount;
+
+        if (random <= numAcc) {
+          return index;
+        }
+      }
+    } else if (genRule === 'many') {
+      const random = rando(1, ballTotal);
+      let numAcc = 0;
+
+      for (let [index, numCount] of byNum.entries()) {
+        if (numCount === undefined) {
+          continue;
+        }
+
+        numAcc = numAcc + numCount;
+
+        if (random <= numAcc) {
+          return index;
+        }
+      }
     } else {
-      return rando(1, 45);
+      if (Math.round(Math.random()) === 0) {
+        const shuffle = Math.round(Math.random() * 8);
+        for (let i = 0; i < shuffle; i++) {
+          randSeed = randSeed.shuffled();
+        }
+
+        return randSeed[(randSeed.length / 2) | 0];
+      } else {
+        return rando(1, 45);
+      }
     }
   };
 
