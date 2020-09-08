@@ -58,7 +58,7 @@ excerpt_separator: ''
 - 다른 언어에 비해 신뢰할만한 타임존 지원이 부족하다.
 - **타임존간 변환이 필요한 경우 [moment](https://momentjs.com) 라이브러리를 사용하라.**
 
-## Date functions
+## Date Functions
 
 - Date.prototype.getTime()
     - UNIX 시간을 반환한다.
