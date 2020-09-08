@@ -14,7 +14,7 @@ excerpt_separator: ''
 - 타임존
     - 동일한 로컬 시간을 따르는 지역
     - 국가나 지역들마다 자신들이 사용하는 타임존에 대한 고유 이름을 부여한다.
-- GMT(Greenwich Mean Tiem)
+- GMT(Greenwich Mean Time)
     - 그리니치 천문대를 기준으로 하는 태양 시간
     - 1925년 2월 5일 부터 1972년 1월 1일 까지 사용됨
 - UTC
