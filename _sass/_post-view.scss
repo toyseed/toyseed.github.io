@@ -38,8 +38,8 @@
     height: 1px;
   }
 
-  word-break: keep-all;
-  text-align: justify;
+  word-break: normal;
+  text-align: initial;
 
   &::after, &::before {
     content: " ";
