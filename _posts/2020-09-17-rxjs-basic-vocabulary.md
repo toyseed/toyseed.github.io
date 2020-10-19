@@ -6,7 +6,7 @@ excerpt_separator: ''
 
 ## Observable
 
-data publisher. `Observer`에게 데이터를 전달하는 주체. 데이터 전달 방식에 따라 `Cold Observable`과 `Hot Observable`로 나뉜다. `Cold Observable`은 `subscribe`이 발생하는 시전에 데이터를 발행하며 `Cold Observable`을 `subscribe`하는 `Observer`는 `subscribe`한 시점에 관계 없이 같은 데이터를 받는다. `Hot Observable`은 `subscribe`이 발생하지 않아도 데이터를 발행한다. `Cold Observable`과 달리 `Hot Observable`을 `subscribe`하는 `Observer`는 `subscribe` 시점에 따라 다른 데이터를 받을 수 있다. 
+data publisher. `Observer`에게 데이터를 전달하는 주체. 데이터 전달 방식에 따라 `Cold Observable`과 `Hot Observable`로 나뉜다. `Cold Observable`은 `subscribe`이 발생하는 시점에 데이터를 발행하며 `Cold Observable`을 `subscribe`하는 `Observer`는 `subscribe`한 시점에 관계 없이 같은 데이터를 받는다. `Hot Observable`은 `subscribe`이 발생하지 않아도 데이터를 발행한다. `Cold Observable`과 달리 `Hot Observable`을 `subscribe`하는 `Observer`는 `subscribe` 시점에 따라 다른 데이터를 받을 수 있다. 
 
 ## Observer
 
