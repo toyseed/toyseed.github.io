@@ -7,18 +7,19 @@ const fs = require('fs');
 const path = require('path');
 
 gulp.task('jekyll-build', function(done) {
+  console.log(process.env.PATH);
   return cp
     .spawn('bundle', ['exec', 'jekyll', 'build', '--drafts', '--watch'], {
       stdio: 'inherit',
     })
+    .on('error', (error) => console.error(error))
     .on('close', done);
 });
 
 gulp.task('webpack', function(done) {
   return cp
-    .spawn('webpack', [], {
-      stdio: 'inherit',
-    })
+    .spawn('webpack', [])
+    .on('error', (error) => console.error(error))
     .on('close', done);
 });
 
