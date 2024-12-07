@@ -93,7 +93,7 @@ Tag 는 템플릿을 위한 로직과 흐름제어를 생성한다. `tag`는 중
 ```html
 {% raw %}
 {% if page.show_sidebar %}
-    <div class="sidebar"%>
+    <div class="sidebar">
         sidebar content
     </div>
 {% endif %}
@@ -141,7 +141,7 @@ front matter 를 사용해서 사이트의 `<title>`을 바꿔보자.
 title: Home
 ---
 <!doctype html>
-<html>
+<html lang="ko">
     <head>
         <meta charset="utf-8">
         <title>{{ page.title }}</title>
@@ -172,7 +172,7 @@ layout 을 사용하는 것이 더 나은 선택이다. layout 은 당신의 컨
 ```html
 {% raw %}
 <!doctype html>
-<html>
+<html lang="ko">
     <head>
         <meta charset="utf-8">
         <title>{{ page.title }}</title>
@@ -244,7 +244,7 @@ include 태그를 이용해 `_layouts/default.html` 에 navigation 을 추가하
 ```html
 {% raw %}
 <!doctype html>
-<html>
+<html lang="ko">
     <head>
         <meta charset="utf-8">
         <title>{{ page.title }}</title>
@@ -686,7 +686,7 @@ layout: default
 {% endraw %}
 ```
 
-### 10. [Deplyment](https://jekyllrb.com/docs/step-by-step/10-deployment/)
+### 10. [Deployment](https://jekyllrb.com/docs/step-by-step/10-deployment/)
 
 이 마지막 단계에서 우리는 출시가 준비된 사이트를 가질 것이다.
 
@@ -775,7 +775,7 @@ JEKYLL_ENV=production bundle exec jekyll build
 
 `JEKYLL_ENV` 의 기본값은 development 이다. `JEKYLL_ENV` 값은 `jekyll.enviroment` 를 통해 liquid 에서 사용할 수 있다. 그렇기 때문에 analytics 스크립트를 프로덕션에서만 사용하려면 다음과 같이 하면 된다.
 
-```html
+```liquid
 {% if jekyll.enviroment == "production" %}
     <script src="my-analytics-script.js"></script>
 {% endif %}
